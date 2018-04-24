@@ -3,7 +3,7 @@ velo = 150; % 165 = v_max
 steer = 150; % 100 => wheels left
 
 while not(q)
-	k = input('Control the car','s');
+	k = getkey();
 	switch k
 		case 'w'
 			velo = velo + 2;
@@ -29,7 +29,10 @@ while not(q)
 	end
 	if q == 1
 		stop();
+		closeCom();
 		break;
 	end
+	drive(velo);
+	steer(steer);
 	pause(0.1);
 end
