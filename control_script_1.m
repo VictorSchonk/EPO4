@@ -2,6 +2,10 @@ q = 0;
 velo = 150; % 165 = v_max
 steer = 150; % 100 => wheels left
 
+%%%%%%%%%%%
+% EPOCommunications('open','\\.\COMn');
+%%%%%%%%%%%
+
 while not(q)
 	k = getkey();
 	switch k
