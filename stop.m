@@ -1,6 +1,7 @@
 function [r_val] = stop()
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%stop This function stops the car from driving and straightens the wheels.
+%After that it returns the status in the command window.
+%   
 
 	EPOCommunications('transmit','M150');
 	EPOCommunications('transmit','D150');
