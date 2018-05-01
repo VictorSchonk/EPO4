@@ -19,22 +19,12 @@ while not(q)
 			velo = velo - 2;
 		case 'q'
 			q = 1;
+		case 'b'
+			velo = 150;
+			st = 150;
 		otherwise
-			if st > 150
-				st = st - 1;
-			elseif st < 150
-				st = st + 1;
-			end
-			if velo > 150
-				velo = velo - 1;
-			elseif velo < 150
-				velo = velo + 1;
-			end
-	end
-	if st < 100
-		st = 100;
-	elseif st > 200
-		st = 200;
+			st = st;
+			velo = velo;
 	end
 	if velo < 135
 		velo = 135;
@@ -47,6 +37,6 @@ while not(q)
 		break;
 	end
 	drive(velo);
-	steer(steer);
+	steer(st);
 	pause(0.1);
 end
