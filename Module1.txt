@@ -1,0 +1,30 @@
+2.1.3
+task 1
+	Bluetooth has a range of at least 6 meters. 
+	Bluetooth delay? Approximate by total delay measurements done and specifications.
+	Delay is longer for full status requests, due to longer communication.
+
+2.2.2
+task 1
+	
+task 2
+	Full nose dive still gives a correct measurement, measurements done at 30, 40, 50 and 100 cm, except at large distances: than the measured 
+	distance becomes larger because the reflections are weak, not returning. This is however not really a problem, since braking at a larger 
+	distance is never necessary. 
+	A possible solution if it ever proves to be a problem is to ignore sensor measurements during hard braking.
+	
+task 3
+	
+task 4
+	10000 delay measurements(sensor data) saved, mean 0.04-ish
+	Save full status delay data?
+task 5
+	Compare distance measurements to previous measurements to find outliers, in that case take other sensor data as distance, 
+	otherwise take mean of two sensors as distance. 
+task 6
+	Bluetooth operating frequency	2.4 Ghz
+	Bluetooth operating range	> 6 meters
+	Ultrasonic sensor resolution	1 cm, but depends on distance(closer is more reliable than further away, fe due to reflections)
+	Ultrasonic sensor distance	Accurate up to about 250 cm
+	Turning radius			76 cm
+	Max. Command refresh time		
