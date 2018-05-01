@@ -1,4 +1,4 @@
-function [outputArg1,outputArg2] = sensors()
+function [outputArg1, outputArg2] = sensors()
 %SENSORS Summary of this function goes here
 %   Detailed explanation goes here
 
