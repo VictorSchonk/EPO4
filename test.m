@@ -77,11 +77,11 @@ B(1)=0;
 i = 50;
 while i
 	[A(51-i),B(51-i)] = sensors();
-	if i < 15
-		drive(150);
-	elseif i < 30
-		drive(135);
-	end
+% 	if i < 15
+% 		drive(150);
+% 	elseif i < 30
+% 		drive(135);
+% 	end
 	pause(0.05);
 	i = i-1;
 end
