@@ -67,6 +67,20 @@
 % 
 % stem(sense);
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Top speed measurement %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+openCom(8);
+drive(165);
+X = [0,0];
+i = 100;
+while i
+	X(1001-i) = sensors();
+	pause(0.1);
+	i = i-1;
+end
+stop();
+
 %%%%%%%%%%%%%%%%%%
 % Video Analasys %
 %%%%%%%%%%%%%%%%%%
