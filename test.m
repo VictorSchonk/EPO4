@@ -70,16 +70,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % Top speed measurement %
 %%%%%%%%%%%%%%%%%%%%%%%%%
-openCom(8);
+openCom(6);
 drive(165);
-X = [0,0];
-i = 100;
+A(1)=0;
+B(1)=0;
+i = 50;
 while i
-	X(1001-i) = sensors();
-	pause(0.1);
+	[A(51-i),B(51-i)] = sensors();
+	pause(0.05);
 	i = i-1;
 end
 stop();
+closeCom();
+plot(A)
+hold on
+plot(B)
+
+% 
+% 
+% 
+% 
 
 %%%%%%%%%%%%%%%%%%
 % Video Analasys %
