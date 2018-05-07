@@ -1,6 +1,7 @@
 function [outputArg1, outputArg2] = sensors()
 %SENSORS Summary of this function goes here
 %   Detailed explanation goes here
+%	Returns value in cm's
 
 	str = EPOCommunications('transmit','Sd');
 	st = strsplit(str,'U');
