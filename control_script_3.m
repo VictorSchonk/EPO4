@@ -1,13 +1,15 @@
-v = 0; % begin speed
-a165 = 1.25; % acceleration with motor at full power
-a135 = -6.5; % acceleration with motor full power backwards while moving forwards
-
 cport = 6; % com port to use
 sdist = 0.40; % distance to stop at in meters
 vroll = 1; % speed to aproach the final position [m/s]
 vmin = 0.15; % speed to stop decelerating at
 del = 0.15; % delay margin
 derr = 0.2; % error margin, to avoid overshoot and oscilation
+
+v = 0; % begin speed
+a165 = 1.25; % acceleration with motor at full power
+a135 = -6.5; % acceleration with motor full power backwards while moving forwards
+% assumed that with motor at 154 with low speeds there is no acceleration,
+% nor decelleration
 
 dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
 a = [a135 0 a165]; % acceleration for different motor states
