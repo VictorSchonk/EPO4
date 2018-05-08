@@ -1,4 +1,6 @@
 cport = 6; % com port to use
+
+
 sdist = 0.50; % distance to stop at in meters
 vroll = 0.55; % speed to aproach the final position [m/s] 0.46 @ 154 | 0.56 @ 155
 vmin = 0.15; % speed to stop decelerating at
@@ -10,6 +12,10 @@ a165 = 1.25; % acceleration with motor at full power
 a135 = -6.5; % acceleration with motor full power backwards while moving forwards
 % assumed that with motor at 154 with low speeds there is no acceleration,
 % nor decelleration
+
+tmp = linspace(0.1,0.2,20);
+dos = tmp((sdist-0.29)*100);
+clear tmp;
 
 dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
 a = [a135 0 a165]; % acceleration for different motor states
@@ -41,7 +47,7 @@ dmar = del*v
 while 1
 	r = r+1;
 	if r>r_val
-		if mean(sensors()/100) < sdist + derr + dmar
+		if mean(sensors()/100) < sdist + derr + dmar + dos
 			drive(150);
 			break;
 		end
