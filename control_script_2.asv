@@ -40,22 +40,22 @@ while 2
 	dmar = del*v; % distance to compensate the delay
 	r = r+1;
 	if r > r_val
-		if v < vmin
-			drive(150);
-			dm = 2;
-		    break;
-		elseif mean(sensors()/100) < sdist+derr
-			drive(150);
-			dm = 2;
-			break;
-		elseif mean(sensors()/100) < sdist+dmar 
-			drive(135);
-			dm = 1;
-		else
-			drive(165);
-			dm = 3;
-		end
+	if v < vmin
+		drive(150);
+		dm = 2;
+        break;
+	elseif mean(sensors()/100) < sdist+derr
+		drive(150);
+		dm = 2;
+		break;
+	elseif mean(sensors()/100) < sdist+dmar 
+		drive(135);
+		dm = 1;
+	else
+		drive(165);
+		dm = 3;
 	end
+	
 end
 
 closeCom();
