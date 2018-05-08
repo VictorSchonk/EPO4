@@ -13,6 +13,8 @@ a135 = -6.5; % acceleration with motor full power backwards while moving forward
 % assumed that with motor at 154 with low speeds there is no acceleration,
 % nor decelleration
 
+%%% Compensation for unexplained overshoot, lineairly proportional to final
+%%% distance
 tmp = linspace(0.1,0.2,20);
 dos = tmp((sdist-0.29)*100);
 clear tmp;
