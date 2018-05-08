@@ -1,5 +1,5 @@
 clear;
-cport = 6; % com port to use
+cport = 8; % com port to use
 sdist = 0.40; % [m] distance to stop at in meters
 vmin = 0.15; % [m/a] speed to stop decelerating at
 del = 0.4; % [s] delay margin
