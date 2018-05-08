@@ -1,12 +1,12 @@
 cport = 8; % com port to use
-sdist = 0.40; % distance to stop at in meters
-vroll = 0; % speed to aproach the final position [m/s]
+sdist = 0.50; % distance to stop at in meters
+vroll = 0.5; % speed to aproach the final position [m/s]
 vmin = 0.15; % speed to stop decelerating at
-del = 0.15; % delay margin
+del = sdist-0.2;%0.2; % delay margin
 derr = 0.2; % error margin, to avoid overshoot and oscilation
 
 v = 0; % begin speed
-a165 = 1.25; % acceleration with motor at full power
+a165 = 1.3; % acceleration with motor at full power
 a135 = -6.5; % acceleration with motor full power backwards while moving forwards
 % assumed that with motor at 154 with low speeds there is no acceleration,
 % nor decelleration
@@ -27,7 +27,7 @@ while 1
 	dmar = del*v; % distance to compensate the delay
 	r = r+1;
 	if r > r_val
-		if mean(sensors()/100) < 2 % currently the minimal sensor value is used mean is another option
+		if mean(sensors()/100) < 1.5+dmar % currently the minimal sensor value is used mean is another option
 			break;
 		end
 		r = 0;
@@ -40,7 +40,7 @@ v = vroll;
 while 1
 	r = r+1;
 	if r>r_val
-		if mean(sensors()/100) < sdist + dmar
+		if mean(sensors()/100) < sdist + derr
 			drive(150);
 			break;
 		end
