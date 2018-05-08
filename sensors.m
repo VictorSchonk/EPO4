@@ -3,7 +3,7 @@ function out = sensors()
 %   Detailed explanation goes here
 %	Returns value in cm's
 
-	str = EPOCommunications('transmit','Sd');
+	str = EPOCommunications('transmit','Sd')
 	st = strsplit(str,'\n');
 	s1 = cell2mat(st(1));
 	s2 = cell2mat(st(2));
@@ -16,6 +16,6 @@ function out = sensors()
 % 	s2 = strsplit(s2(2),'\n');
 % 	outputArg1 = str2double(s1(1));
 % 	outputArg2 = str2double(s2(1));
-	out = [outputArg1, outputArg2];
+	out = [outputArg1, outputArg2]
 	
 end
