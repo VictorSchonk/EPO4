@@ -55,6 +55,7 @@ while 2
 			drive(165);
 			dm = 3;
 		end
+		r = 0;
 	end
 end
 
