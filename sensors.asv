@@ -4,11 +4,9 @@ function out = sensors()
 %	Returns value in cm's
 
 	str = EPOCommunications('transmit','Sd');
-	st = strsplit(str,'\n');
-	s1 = cell2mat(st(1));
-	s2 = cell2mat(st(2));
-	outputArg1 = str2num(s1(4:end));
-	outputArg2 = str2num(s2(4:end));
+	st = strsplit(str,'\n')
+	s1 = cell2mat(st(1))
+	s2 = st(2)
 	
 % 	s1 = strsplit(string(st(1)),'L');
 % 	s2 = strsplit(string(st(2)),'R');
