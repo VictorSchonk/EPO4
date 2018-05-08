@@ -1,6 +1,6 @@
 cport = 6; % com port to use
 sdist = 0.40; % distance to stop at in meters
-vroll = 1; % speed to aproach the final position [m/s]
+vroll = 0; % speed to aproach the final position [m/s]
 vmin = 0.15; % speed to stop decelerating at
 del = 0.15; % delay margin
 derr = 0.2; % error margin, to avoid overshoot and oscilation
@@ -13,7 +13,10 @@ a135 = -6.5; % acceleration with motor full power backwards while moving forward
 
 dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
 a = [a135 0 a165]; % acceleration for different motor states
+r = 0;
+r_val = 15;
 
+try
 openCom(cport);
 
 tic;
@@ -22,9 +25,12 @@ while 1
 	v = v+toc*a(dm); % current speed of the vehicle
 	tic;
 	dmar = del*v; % distance to compensate the delay
-	
-	if min(sensors()/100) < sdist + dmar % currently the minimal sensor value is used mean is another option
-		break;
+	r = r+1;
+	if r > r_val
+		if min(sensors()/100) < 1.5 % currently the minimal sensor value is used mean is another option
+			break;
+		end
+		r = 0;
 	end
 end
 drive(135);
@@ -32,9 +38,16 @@ pause(abs((v-vroll)/a(1)));
 drive(154);
 v = vroll;
 while 1
-	if mean(sensors()/100) < sdist + dmar
-		drive(150);
-		break;
+	r = r+1;
+	if r>r_val
+		if mean(sensors()/100) < sdist + dmar
+			drive(150);
+			break;
+		end
+		r = 0;
 	end
 end
 closeCom();
+catch
+	stop();
+end
