@@ -15,4 +15,3 @@ function out = sensors()
 	out = [outputArg1, outputArg2];
 	
 end
-
