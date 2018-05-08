@@ -1,5 +1,6 @@
 cport = 6; % com port to use
 
+dbumper = 0.08; % distance between sensors and bumper
 
 sdist = 0.50; % distance to stop at in meters
 vroll = 0.55; % speed to aproach the final position [m/s] 0.46 @ 154 | 0.56 @ 155
@@ -15,8 +16,8 @@ a135 = -6.5; % acceleration with motor full power backwards while moving forward
 
 %%% Compensation for unexplained overshoot, lineairly proportional to final
 %%% distance
-tmp = linspace(0.1,0.2,20);
-dos = tmp((sdist-0.29)*100);
+tmp = linspace(0.1,0.3,40);
+dos = tmp((sdist+dbumper-0.29)*100);
 clear tmp;
 
 dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
@@ -49,7 +50,7 @@ dmar = del*v;
 while 1
 	r = r+1;
 	if r>r_val
-		if mean(sensors()/100) < sdist + derr + dmar + dos
+		if mean(sensors()/100) < sdist + derr + dmar + dos + dbumper
 			drive(150);
 			break;
 		end
