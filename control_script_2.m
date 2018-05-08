@@ -1,8 +1,8 @@
 cport = 6; % com port to use
-sdist = 0.40; % distance to stop at in meters
-vmin = 0.15; % speed to stop decelerating at
-del = 0.15; % delay margin
-derr = 0.2; % error margin, to avoid overshoot and oscilation
+sdist = 0.40; % [m] distance to stop at in meters
+vmin = 0.15; % [m/a] speed to stop decelerating at
+del = 0.4; % [s] delay margin
+derr = 0.4; % [m] error margin, to avoid overshoot and oscilation
 
 v = 0; % begin speed
 a165 = 1.25; % acceleration with motor at full power
@@ -11,7 +11,7 @@ a135 = -6.5; % acceleration with motor full power backwards while moving forward
 dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
 a = [a135 0 a165]; % acceleration for different motor states
 
-openCom(6);
+openCom(cport);
 
 tic;
 drive(165);
