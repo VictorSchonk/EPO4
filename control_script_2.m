@@ -1,5 +1,5 @@
 clear;
-cport = 8; % com port to use
+cport = 3; % com port to use
 sdist = 0.40; % [m] distance to stop at in meters
 vmin = 0.15; % [m/a] speed to stop decelerating at
 del = 0.4; % [s] delay margin
@@ -13,7 +13,7 @@ dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
 a = [a135 0 a165]; % acceleration for different motor states
 
 openCom(cport);
-
+try
 tic;
 drive(165);
 while 1
@@ -53,3 +53,6 @@ while 2
 end
 
 closeCom();
+catch
+    stop();
+end
