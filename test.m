@@ -71,25 +71,25 @@
 % Top speed measurement %
 %%%%%%%%%%%%%%%%%%%%%%%%%
 openCom(6);
-drive(165);
-A(1)=0;
-B(1)=0;
-i = 50;
-while i
-	[A(51-i),B(51-i)] = sensors();
+drive(155);
+i = 1;
+while 1
+	S(i,:) = sensors();
 % 	if i < 15
 % 		drive(150);
 % 	elseif i < 30
 % 		drive(135);
 % 	end
 	pause(0.05);
-	i = i-1;
+	i = i+1;
+	if i > 100
+		break;
+	end
 end
 stop();
-closeCom();
-plot(A)
-hold on
-plot(B)
+plot(S(:,1));
+hold on;
+plot(S(:,2));
 
 % 
 % 
