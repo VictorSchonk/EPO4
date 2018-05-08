@@ -1,3 +1,4 @@
+cport = 6; % com port to use
 sdist = 0.40; % distance to stop at in meters
 vmin = 0.15; % speed to stop decelerating at
 del = 0.15; % delay margin
@@ -9,6 +10,8 @@ a135 = -6.5; % acceleration with motor full power backwards while moving forward
 
 dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
 a = [a135 0 a165]; % acceleration for different motor states
+
+openCom(6);
 
 t0 = tic;
 drive(165);
@@ -32,16 +35,18 @@ while 2
 	if v < vmin
 		drive(150);
 		dm = 2;
-	elseif mean(sensors()/100) < sdist+dmar 
-		drive(135);
-		dm = 1;
 	elseif mean(sensors()/100) < sdist+derr
 		drive(150);
 		dm = 2;
 		break;
+	elseif mean(sensors()/100) < sdist+dmar 
+		drive(135);
+		dm = 1;
 	else
 		drive(165);
 		dm = 3;
 	end
 	
 end
+
+closeCom();

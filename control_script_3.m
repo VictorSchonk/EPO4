@@ -16,7 +16,7 @@ a = [a135 0 a165]; % acceleration for different motor states
 
 openCom(cport);
 
-t0 = tic;
+tic;
 drive(165);
 while 1
 	v = toc*a(dm); % current speed of the vehicle
@@ -32,7 +32,7 @@ drive(154);
 v = vroll;
 while 1
 	if mean(sensors()/100) < sdist + dmar
-		drvie(150);
+		drive(150);
 		break;
 	end
 end
