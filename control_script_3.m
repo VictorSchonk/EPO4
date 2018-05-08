@@ -3,7 +3,7 @@ sdist = 0.50; % distance to stop at in meters
 vroll = 0.5; % speed to aproach the final position [m/s]
 vmin = 0.15; % speed to stop decelerating at
 del = 0.2;%0.2; % delay margin
-derr = 0.6-sdist; % error margin, to avoid overshoot and oscilation
+derr = 0;%0.6-sdist; % error margin, to avoid overshoot and oscilation
 
 v = 0; % begin speed
 a165 = 1.3; % acceleration with motor at full power
