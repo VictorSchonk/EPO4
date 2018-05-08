@@ -5,6 +5,7 @@ function out = sensors()
 
 	str = EPOCommunications('transmit','Sd');
 	st = strsplit(str,'\n');
+    clear str;
 	s1 = cell2mat(st(1));
 	s2 = cell2mat(st(2));
 	outputArg1 = str2num(s1(4:end));
