@@ -21,7 +21,7 @@ while 1
 	tic;
 	dmar = del*v; % distance to compensate the delay
 	
-	if min(sensors()/100) < sdist + dmar % currently the minimal sensor value is used mean is another option
+	if min(sensors()/100) < 1.5 % currently the minimal sensor value is used mean is another option
 		break;
 	end
 	
@@ -36,6 +36,7 @@ while 2
 	if v < vmin
 		drive(150);
 		dm = 2;
+        break;
 	elseif mean(sensors()/100) < sdist+derr
 		drive(150);
 		dm = 2;
