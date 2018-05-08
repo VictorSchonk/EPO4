@@ -1,4 +1,4 @@
-cport = 6; % com port to use
+cport = 8; % com port to use
 sdist = 0.40; % distance to stop at in meters
 vroll = 0; % speed to aproach the final position [m/s]
 vmin = 0.15; % speed to stop decelerating at
@@ -27,7 +27,7 @@ while 1
 	dmar = del*v; % distance to compensate the delay
 	r = r+1;
 	if r > r_val
-		if min(sensors()/100) < 1.5 % currently the minimal sensor value is used mean is another option
+		if mean(sensors()/100) < 2 % currently the minimal sensor value is used mean is another option
 			break;
 		end
 		r = 0;
