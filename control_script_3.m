@@ -45,7 +45,7 @@ drive(135);
 pause(abs((v-vroll)/a(1)));
 drive(155);
 v = vroll;
-dmar = del*v
+dmar = del*v;
 while 1
 	r = r+1;
 	if r>r_val
@@ -62,8 +62,3 @@ catch
 	pause(0.2);
 	closeCom();
 end
-
-openCom(8)
-drive(155)
-pause(50)
-stop()
