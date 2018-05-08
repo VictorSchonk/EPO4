@@ -1,4 +1,4 @@
-function [outputArg1, outputArg2] = sensors()
+function out = sensors()
 %SENSORS Summary of this function goes here
 %   Detailed explanation goes here
 %	Returns value in cm's
@@ -12,6 +12,7 @@ function [outputArg1, outputArg2] = sensors()
 	s2 = strsplit(s2(2),'\n');
 	outputArg1 = str2double(s1(1));
 	outputArg2 = str2double(s2(1));
+	out = [outputArg1, outputArg2];
 	
 end
 

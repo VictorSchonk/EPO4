@@ -6,6 +6,7 @@ function [r_val] = stop()
 	EPOCommunications('transmit','M150');
 	EPOCommunications('transmit','D150');
 	r_val = EPOCommunications('transmit','S');
+	closeCom();
 
 end
 

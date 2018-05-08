@@ -13,11 +13,12 @@ a = [a135 0 a165]; % acceleration for different motor states
 
 openCom(6);
 
-t0 = tic;
+tic;
 drive(165);
 while 1
 	
-	v = toc*a(dm); % current speed of the vehicle
+	v = v+toc*a(dm); % current speed of the vehicle
+	tic;
 	dmar = del*v; % distance to compensate the delay
 	
 	if min(sensors()/100) < sdist + dmar % currently the minimal sensor value is used mean is another option
