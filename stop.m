@@ -4,7 +4,9 @@ function [r_val] = stop()
 %   
 
 	EPOCommunications('transmit','M150');
+	pause(0.05);
 	EPOCommunications('transmit','D150');
+	pause(0.05);
 	r_val = EPOCommunications('transmit','S');
 	closeCom();
 
