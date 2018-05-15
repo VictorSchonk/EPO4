@@ -1,4 +1,4 @@
-cport = 6; % com port to use
+cport = 8; % com port to use
 
 dbumper = 0.08; % distance between sensors and bumper
 
@@ -16,8 +16,8 @@ a135 = -6.5; % acceleration with motor full power backwards while moving forward
 
 %%% Compensation for unexplained overshoot, lineairly proportional to final
 %%% distance
-tmp = linspace(0.1,0.3,40);
-dos = tmp((sdist+dbumper-0.29)*100);
+tmp = linspace(0.1,0.3,40)-0.05;
+dos = tmp(int8((sdist+dbumper-0.29)*100));
 clear tmp;
 
 dm = 3; % 3 for 165 | 2 for 150 | 1 for 135
@@ -26,7 +26,7 @@ r = 0;
 r_val = 15;
 
 try
-openCom(cport);
+% openCom(cport);
 
 tic;
 drive(165);
