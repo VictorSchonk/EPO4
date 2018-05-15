@@ -16,7 +16,7 @@ a135 = -6.55; % acceleration with motor full power backwards while moving forwar
 
 %%% Compensation for unexplained overshoot, lineairly proportional to final
 %%% distance
-tmp = linspace(0.1+0.05,0.3,40); % add 0.05 for short begin dist and substr 0.05 for long begin dist
+tmp = linspace(0.15,0.3,40); % add 0.05 for short begin dist and substr 0.05 for long begin dist
 dos = tmp(int8((sdist-0.29)*100)); %+dbumper
 clear tmp;
 
