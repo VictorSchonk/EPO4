@@ -2,7 +2,7 @@ cport = 6; % com port to use
 
 dbumper = 0.08; % distance between sensors and bumper
 
-sdist = 0.50; % distance to stop at in meters
+sdist = 0.30; % distance to stop at in meters
 vroll = 0.4; % speed to aproach the final position [m/s] 0.46 @ 154 | 0.56 @ 155
 vmin = 0.15; % speed to stop decelerating at
 del = 0.3;%0.2; % delay margin
