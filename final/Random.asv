@@ -1,0 +1,13 @@
+Nbits = 32;
+
+%hold on;
+for i = 1:10000
+    seq(i,:) = randi([0 1],1,Nbits);
+    auto(i,:) = conv(seq(i,:),fliplr(seq(i,:)));
+    if findpeaks(auto(i,:),'Treshold',25
+        y = i
+    else
+        auto(i,:) = zeros(1,
+end
+
+plot(auto)
