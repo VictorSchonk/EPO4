@@ -4,7 +4,7 @@ code = '0x32f21dff'; % 32f21dff
 fc = 10000;
 rc = 250;
 
-recObj = audiorecorder(44100,24,2);
+recObj = audiorecorder(44100,24,1);
 record(recObj, 10);
 
 try
@@ -19,3 +19,6 @@ try
 catch
 	stop();
 end
+
+% getaudiodata(recObj)
+% 14190 - 14300
