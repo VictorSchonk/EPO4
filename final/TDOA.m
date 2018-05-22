@@ -2,7 +2,7 @@ function [h,dt,dist] = TDOA(y1,y2)
 %TDOA Summary of this function goes here
 %   Detailed explanation goes here
 
-	[h,H] = ch3(y1,y2);
+	[h,~] = ch3(y1,y2);
 % 	t = -length(h)/2:1:(length(h)-1)/2;
 % 	plot(t,ifftshift(h));
 % 	xlabel('Sample index');
