@@ -22,6 +22,7 @@ function setup_beacon(fb,code,fc,rc)
 %	The last (fourth) input argument is the repetition count, this should
 %be an integer between 32 and 65535.
 
+	pause(0.01);
 	% Bit freq. 0 ... 65535
 	% Input as integer
 	EPOCommunications('transmit',sprintf('B%d',fb));
@@ -32,7 +33,7 @@ function setup_beacon(fb,code,fc,rc)
 	pause(0.01);
 	% Carrier freq 0 ... 65535
 	% Input as integer
-	EPOCommunications('transmit',sprint('F%d',fc)); 
+	EPOCommunications('transmit',sprintf('F%d',fc)); 
 	pause(0.01);
 	% Repetition count 32 ... 65535
 	% Input as integer
@@ -42,6 +43,7 @@ function setup_beacon(fb,code,fc,rc)
 	EPOCommunications('transmit','A1');
 	pause(0.2);
 	EPOCommunications('transmit','A0');
+	pause(0.01);
 
 end
 
