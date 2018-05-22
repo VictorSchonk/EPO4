@@ -1,6 +1,6 @@
 cport = 6;
 fb = 2500;
-code = '0x32f21dff'; % 32f21dff
+code = '0x62FFDFFF'; % 62FFDFFF
 fc = 10000;
 rc = 250;
 

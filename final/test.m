@@ -28,3 +28,9 @@ C = inv(A.'*A)*A.';
 y = C*B;
 
 toc
+
+% ---------------------------------------------------
+
+load('auto_corr_code_bin.mat')
+
+hexval = binaryVectorToHex(auto_corr_code)
