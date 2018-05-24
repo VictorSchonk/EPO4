@@ -82,6 +82,20 @@ hexval = binaryVectorToHex(auto_corr_code)
 %                   running along rows, with a seperate column for 
 %                   each channel
 
+%
+%	-----------------------------------------
+%	|	m2								m3	|
+%	|	(0,460)					(460,460)	|
+%	|										|
+%	|										|
+%	|										|
+%	|										|
+%	|										|
+%	|										|
+%	|										|
+%	|	(0,0)					(460,0)		|
+%	|	m1								m4	|
+
 
 %
 %	!!! Open the correct com port !!!
@@ -96,7 +110,15 @@ lastchannel = nmic; % microphones to use, as they are numbered
 
 %	setup of the microphone position matrix to use an analysation function
 %	in a simple way
+%	x1	x2	x3	x4
+%	y1	y2	y3	y4
+m1 = [0;0];
+m2 = [0;460];
+m3 = [460;460];
+m4 = [460;0];
+ma = [m1,m2,m3,m4];
 
+%	setup of the variable to keep the wile loop running
 run = 1;
 
 while run
