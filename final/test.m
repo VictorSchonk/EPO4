@@ -60,10 +60,18 @@ hexval = binaryVectorToHex(auto_corr_code)
 %	Compare
 %	Repeat
 
+%
+%	Needed variables for audio transmission:
+%		-Code in hex format
+%		-nSamplesRec
+%
+
 tresh = 0.004;
 
 run = 1;
 
 while run
+	find threshold
 	record
+	analyse
 end
