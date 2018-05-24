@@ -1,4 +1,4 @@
-function [h,dt,dist] = TDOA(y1,y2)
+function [h,dt,dist] = TDOA(y1,y2,Fs)
 %TDOA Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -14,7 +14,7 @@ function [h,dt,dist] = TDOA(y1,y2)
 
 	% for negative distances.
 	if ind > 0.5*length(h)
-		ind = ind-length(h); 
+		ind = ind-length(h);
 	end
 	
 	dt = ind/Fs;	% Compute the DTOA
