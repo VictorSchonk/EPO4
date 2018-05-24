@@ -21,4 +21,3 @@ function [h,dt,dist] = TDOA(y1,y2,Fs)
 	dist = 343*dt;	% Compute distance
 
 end
-
