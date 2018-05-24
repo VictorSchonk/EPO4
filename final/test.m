@@ -33,7 +33,7 @@ toc
 
 load('auto_corr_code_bin.mat')
 
-hexval = binaryVectorToHex(auto_corr_code)
+hexval = binaryVectorToHex(auto_corr_code);
 
 % ---------------------------------------------------
 
