@@ -2,7 +2,7 @@ function [h,H] = ch3(x,y)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
-    div_e = 0.0; % multiplier to calculate epsilon (threshold to discard noise amplification.
+    div_e = 0.3; % multiplier to calculate epsilon (threshold to discard noise amplification.
 
     Ny = length(y);
     Nx = length(x);
