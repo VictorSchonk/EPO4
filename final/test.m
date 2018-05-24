@@ -82,12 +82,20 @@ hexval = binaryVectorToHex(auto_corr_code)
 %                   running along rows, with a seperate column for 
 %                   each channel
 
+
+%
+%	!!! Open the correct com port !!!
+%
+
+%	setup of the threshold and recording values
 nmic = 4; % Amount of microphones being used
 tresh = 0.004;
 th = zeros(nmic,1);
-
 firstchannel = 1;
 lastchannel = nmic; % microphones to use, as they are numbered
+
+%	setup of the microphone position matrix to use an analysation function
+%	in a simple way
 
 run = 1;
 
