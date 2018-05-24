@@ -139,7 +139,9 @@ while run
 		th = zeros(nmic,1);
 		rec = pa_wavrecord(firstchannel, lastchannel, 4000,48e3,0,'asio'); % recording to analyse
 		%	Analysation part
-		
+		% >TDOA
+		% >half hyperbolic function (see wikipedia)
+		% >intersection (take error into account)
 	else
 		th = zeros(nmic,1);
 	end
