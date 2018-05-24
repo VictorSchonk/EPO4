@@ -37,16 +37,6 @@ hexval = binaryVectorToHex(auto_corr_code);
 
 % ---------------------------------------------------
 
-for k = 1:9
-	figure;
-	hold on;
-	for i = 1:4
-		plot(RXXr(k,:,i))
-	end
-end
-
-% ---------------------------------------------------
-
 %
 %	Samples to be used before end of array 4800
 %	intense peak is 700 samples big
@@ -149,6 +139,12 @@ while run
 end
 
 
-
+for k = 1:9
+	figure;
+	hold on;
+	for i = 1:4
+		plot(RXXr(k,:,i))
+	end
+	
 
 
