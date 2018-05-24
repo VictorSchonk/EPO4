@@ -62,8 +62,4 @@ hexval = binaryVectorToHex(auto_corr_code)
 
 tresh = 0.004;
 
-run = 1;
 
-while run
-	record
-end
