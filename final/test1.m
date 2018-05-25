@@ -86,12 +86,12 @@ try
 	%	setup of the variable to keep the wile loop running
 	run = 1;
 	
-	setup_beacon(10000,'0x62ffdfff',2500,250);
+	setup_beacon(10000,'0x62ffdfff',2500,2500);
 	EPOCommunications('transmit','A1');
 	
 	while run
 		%	Threshold part (1 sample)
-		th = pa_wavrecord(firstchannel, lastchannel, 1,48e3,0,'win') % recorded sample for threshold detection
+		th = pa_wavrecord(firstchannel, lastchannel, 1,48e3,0,'dx') % recorded sample for threshold detection
 		if max(th) >= tresh
 			%	Record part (4000 samples)
 			th = zeros(nmic,1);
@@ -106,6 +106,10 @@ try
 		end
 	
 		% Other processes like sensors() and driving the car
+		run = run + 1;
+		if run >= 20
+			run = 0;
+		end
 		
 	end
 	
