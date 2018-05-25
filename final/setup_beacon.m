@@ -21,6 +21,13 @@ function setup_beacon(fb,code,fc,rc)
 %
 %	The last (fourth) input argument is the repetition count, this should
 %be an integer between 32 and 65535.
+%
+%
+%	used:
+%		fb	= 10e3
+%		code= 62ffdfff
+%		fc	= 25e2
+%		rc	= 250
 
 	pause(0.01);
 	% Bit freq. 0 ... 65535

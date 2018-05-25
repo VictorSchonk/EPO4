@@ -112,7 +112,7 @@ end
 %
 
 %	setup of the threshold and recording values
-nmic = 4; % Amount of microphones being used
+nmic = 2; % Amount of microphones being used
 tresh = 0.004;
 th = zeros(nmic,1);
 firstchannel = 1;
@@ -131,6 +131,9 @@ ma = [m1,m2,m3,m4];
 %	setup of the variable to keep the wile loop running
 run = 1;
 
+setup_beacon(10e3,'0x62ffdfff',25e2,25e1);
+EPOCommunications('transmit','A1');
+
 while run
 	%	Threshold part (1 sample)
 	th = pa_wavrecord(firstchannel, lastchannel, 1,48e3,0,'asio'); % recorded sample for threshold detection
@@ -147,10 +150,11 @@ while run
 	end
 	
 	% Other processes like sensors() and driving the car
-	
+	run = 0;
 end
 
 
+EPOCommunications('transmit','A0');
 
 
 
