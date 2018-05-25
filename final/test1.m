@@ -114,6 +114,7 @@ try
 	end
 	
 	EPOCommunications('transmit','A0');
+    closeCom();
 	
 catch
 	EPOCommunications('transmit','A0');
