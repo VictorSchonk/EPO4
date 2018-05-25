@@ -106,7 +106,7 @@ try
 		end
 	
 		% Other processes like sensors() and driving the car
-		run = run + 1;
+		run = run + 1	
 		if run >= 20
 			run = 0;
 		end
