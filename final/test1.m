@@ -101,23 +101,11 @@ try
 	while run
 		switch coputer
 			case 1
-				record(rec1,24000/Fs);
+				record(rec1,12000/Fs);
 				
 			otherwise
-				%	Threshold part (1 sample)
-				th = pa_wavrecord(firstchannel, lastchannel, 1,48e3,0,'asio') % recorded sample for threshold detection
-				if max(th) >= tresh
-					%	Record part (4000 samples)
-					th = zeros(nmic,1);
-					rec = pa_wavrecord(firstchannel, lastchannel, 4000,48e3,0,'asio'); % recording to analyse
-					%	Analysation part
-					% >TDOA
-					% >half hyperbolic function (see wikipedia)
-					% >intersection (take error into account)
-					break;
-				else
-					%th = zeros(nmic,1);
-				end
+				rec = pa_wavrecord(firstchannel, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
+				plot(rec);
 		end
 		
 	
