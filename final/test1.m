@@ -94,13 +94,13 @@ try
 	%	setup of the variable to keep the wile loop running
 	run = 1;
 	
-	setup_beacon(10000,'0x62ffdfff',2500,2500);
+	setup_beacon(10000,'0x62ffdfff',2500,250);
 	EPOCommunications('transmit','A1');
 	
 	while run
 		switch coputer
 			case 1
-				recordblocking(rec1,24000/Fs);
+				recordblocking(rec1,12000/Fs);
 				rec = getaudiodata(rec1);
 				ind = find(rec >= tresh,1)
 % 				plot(rec(ind-50:ind+4000,:));
@@ -116,7 +116,7 @@ try
 		
 		if run >= 20 && coputer ~= 1
 			run = 0;
-		elseif run >= 40
+		elseif run >= 4
 			run = 0;
 		else
 			run = run + 1	
