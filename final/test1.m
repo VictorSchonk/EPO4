@@ -68,7 +68,7 @@ try
 	
 	%	setup of the threshold and recording values
 	nmic = 2; % Amount of microphones being used
-	tresh = 0.004;
+	tresh = 0.002;
 	th = zeros(nmic,1);
 	firstchannel = 1;
 	lastchannel = nmic; % microphones to use, as they are numbered
