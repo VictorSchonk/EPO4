@@ -77,9 +77,8 @@ try
 	Fs = 48000;
 	
 	if coputer == 1
-		tresh = 0.0005;
+		tresh = 0.05;
 		rec1 = audiorecorder(Fs,24,nmic,0);
-		rec2 = audiorecorder(Fs,24,nmic,0);
 	end
 	
 	%	setup of the microphone position matrix to use an analysation function
@@ -101,10 +100,11 @@ try
 	while run
 		switch coputer
 			case 1
-				record(rec1,12000/Fs);
+				recordblocking(rec1,24000/Fs);
 				rec = getaudiodata(rec1);
-				ind = find(rec >= thresh,1);
-				plot(rec(ind-50:ind+4000));
+				ind = find(rec >= tresh,1)
+% 				plot(rec(ind-50:ind+4000,:));
+				plot(rec);
 			otherwise
 				rec = pa_wavrecord(firstchannel, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
 				ind = find(rec >= thresh,1);
@@ -116,7 +116,7 @@ try
 		
 		if run >= 20 && coputer ~= 1
 			run = 0;
-		elseif run >= 20000
+		elseif run >= 40
 			run = 0;
 		else
 			run = run + 1	
