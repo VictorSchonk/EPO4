@@ -73,7 +73,7 @@ try
 	firstchannel = 1;
 	lastchannel = nmic; % microphones to use, as they are numbered
 	
-	coputer = 0; % 1 for laptop other for test setup
+	coputer = 1; % 1 for laptop other for test setup
 	Fs = 48000;
 	
 	if coputer == 1
@@ -102,10 +102,13 @@ try
 		switch coputer
 			case 1
 				record(rec1,12000/Fs);
-				
+				rec = getaudiodata(rec1);
+				ind = find(rec >= thresh,1);
+				plot(rec(ind-50:ind+4000));
 			otherwise
 				rec = pa_wavrecord(firstchannel, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
-				plot(rec);
+				ind = find(rec >= thresh,1);
+				plot(rec(ind-50:ind+4000));
 		end
 		
 	
