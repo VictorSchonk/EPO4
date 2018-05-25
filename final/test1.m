@@ -73,6 +73,15 @@ try
 	firstchannel = 1;
 	lastchannel = nmic; % microphones to use, as they are numbered
 	
+	coputer = 0; % 1 for laptop other for test setup
+	Fs = 48000;
+	
+	if coputer == 1
+		tresh = 0.0005;
+		rec1 = audiorecorder(Fs,24,nmic,0);
+		rec2 = audiorecorder(Fs,24,nmic,0);
+	end
+	
 	%	setup of the microphone position matrix to use an analysation function
 	%	in a simple way
 	%	x1	x2	x3	x4
@@ -90,25 +99,36 @@ try
 	EPOCommunications('transmit','A1');
 	
 	while run
-		%	Threshold part (1 sample)
-		th = pa_wavrecord(firstchannel, lastchannel, 1,48e3,0,'dx') % recorded sample for threshold detection
-		if max(th) >= tresh
-			%	Record part (4000 samples)
-			th = zeros(nmic,1);
-			rec = pa_wavrecord(firstchannel, lastchannel, 4000,48e3,0,'asio'); % recording to analyse
-			%	Analysation part
-			% >TDOA
-			% >half hyperbolic function (see wikipedia)
-			% >intersection (take error into account)
-			run = 0;
-		else
-			%th = zeros(nmic,1);
+		switch coputer
+			case 1
+				record(rec1,24000/Fs);
+				
+			otherwise
+				%	Threshold part (1 sample)
+				th = pa_wavrecord(firstchannel, lastchannel, 1,48e3,0,'asio') % recorded sample for threshold detection
+				if max(th) >= tresh
+					%	Record part (4000 samples)
+					th = zeros(nmic,1);
+					rec = pa_wavrecord(firstchannel, lastchannel, 4000,48e3,0,'asio'); % recording to analyse
+					%	Analysation part
+					% >TDOA
+					% >half hyperbolic function (see wikipedia)
+					% >intersection (take error into account)
+					break;
+				else
+					%th = zeros(nmic,1);
+				end
 		end
+		
 	
 		% Other processes like sensors() and driving the car
-		run = run + 1	
-		if run >= 20
+		
+		if run >= 20 && coputer ~= 1
 			run = 0;
+		elseif run >= 20000
+			run = 0;
+		else
+			run = run + 1	
 		end
 		
 	end
