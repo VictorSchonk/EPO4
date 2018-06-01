@@ -162,7 +162,7 @@ figure;
 hold on;
 for i = 1:9
 	mf = 4;
-	h = abs(ch3(RXXr(7,6130:10180,1),RXXr(7,6130:10180,2)));
+	h = abs(ch3(RXXr(7,6130:10180,1),RXXr(7,6130:10180,2)))(1:950);
 	th = (exp(mf*mean(h(1:950)))-1);
 	ch = exp(h)-1;
 	plot(ch(1:950));
