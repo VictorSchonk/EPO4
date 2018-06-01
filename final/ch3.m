@@ -8,16 +8,19 @@ function [h,H] = ch3(x,y)
     Nx = length(x);
     L = Ny - Nx + 1;
     
-    if Nx == Ny
-        Y = fft(y);
-        X = fft(x);   % zero padding to manage Ny    [x; zeros(Ny - Nx + 1,1)]
-    elseif Ny > Nx
-        Y = fft(y);
-        X = fft([x; zeros(Ny - Nx,1)]);
-    else
-        Y = fft([y; zeros(Nx - Ny,1)]);
-        X = fft(x);
-	end
+	Y = fft(y,max(Nx,Ny));
+	X = fft(x,max(Nx,Ny));
+	
+%     if Nx == Ny
+%         Y = fft(y);
+%         X = fft(x);   % zero padding to manage Ny    [x; zeros(Ny - Nx + 1,1)]
+%     elseif Ny > Nx
+%         Y = fft(y);
+%         X = fft([x; zeros(Ny - Nx,1)]);
+%     else
+%         Y = fft([y; zeros(Nx - Ny,1)]);
+%         X = fft(x);
+% 	end
         
     eps = max(abs(X))*div_e;
     ind = find(abs(X) < eps);
