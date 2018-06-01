@@ -6,7 +6,7 @@ function [outArg] = ch_td_pair(ipArg1,ipArg2,mf,Fs)
 %	Fs:			Sample frequency of ipArg
 %
 %	outArg:		Output argument in centimeter difference from the
-%	centerline
+%		centerline of the two microphones.
 
 	h = abs(ch3(ipArg1,ipArg2));	% Calculate the channel estimate from the two input signals
 	h = h(1:950);					% Cut to the maximal value due to size of field
