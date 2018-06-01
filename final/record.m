@@ -1,4 +1,4 @@
-function [ output_args ] = record()
+function [ rec ] = record()
 %RECORD Summary of this function goes here
 %   Detailed explanation goes here
 	
@@ -12,7 +12,9 @@ function [ output_args ] = record()
     
 	rec = pa_wavrecord(firstchannel, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
 	ind = find(rec >= thresh,1);
+	rec = rec(ind-50:ind+4000);
 % 	plot(rec(ind-50:ind+4000));	
+	
 
 
 
