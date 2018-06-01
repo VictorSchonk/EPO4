@@ -1,4 +1,4 @@
-function pos(1:3) = loc(d12, d13, d14, d15, d23, d24, d25, d34, d35, d45)
+function [location] = loc(d12, d13, d14, d15, d23, d24, d25, d34, d35, d45)
 % Hier komt een hele mooie beschrijving
 
 carh = 26;  mich = 50; mic5h = 80;
@@ -63,5 +63,6 @@ C = [r(1)^2 - sum((m1).^2) + sum((m2).^2);
      r(9)^2 - sum((m3).^2) + sum((m5).^2);
      r(10)^2 - sum((m4).^2) + sum((m5).^2)];
  
- pos = (inv(transpose(A)*A))*transpose(A)*C;
+ location = (inv(transpose(A)*A))*transpose(A)*C;
+location = location(1:3);
 end
