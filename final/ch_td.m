@@ -1,13 +1,14 @@
 function [outArray] = ch_td(ipArg)
 %CH_TD Calculate the vector of differences in centimeters from the
 %centerlines of all microphone pairs
-%   ipArg		|	A 4050x5 array. Of the recorded peak from the 5 microphones
 %
+%   ipArg		|	A 4050x5 array. Of the recorded peak from the 5 microphones
+%---------------
 %	mf = 4		|	The threshold multiplication value to check if samples are
 %					vallid.
 %	Fs = 48000	|	The sample frequency. Which is 48000 in the final
 %					challenge.
-%
+%---------------
 %	outArray	|	Array of the difference values in centimeters from the
 %					corresponding microphone pairs.
 %					(r12,r13,r14,r15,r23,r24,r25,r34,r35,r45)
