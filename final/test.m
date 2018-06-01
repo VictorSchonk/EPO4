@@ -156,5 +156,23 @@ end
 
 EPOCommunications('transmit','A0');
 
+% ---------------------------------------------------
 
+figure;
+hold on;
+for i = 1:9
+	mf = 4;
+	h = abs(ch3(RXXr(7,6130:10180,1),RXXr(7,6130:10180,2)));
+	th = (exp(mf*mean(h(1:950)))-1);
+	ch = exp(h)-1;
+	plot(ch(1:950));
+	hold on;
+	line([0;950],[th;th]);
+end
 
+% if sample > 950 send NaN
+
+% 1: 5040-9090
+% 9: 5650-9700
+% 6: 4000-8500
+% 7: 6130-10180
