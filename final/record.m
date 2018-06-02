@@ -1,21 +1,21 @@
-function [ rec, ind ] = record()
-%RECORD Summary of this function goes here
-%   Detailed explanation goes here
+function [ rec ] = record()
+%RECORD This function is used to simplify the recording of the 0.25 second
+%audio clips and then resize them so that the correct interval is returned.
+%   
+%	rec			| The [4050 x nmic] array of audio data
 	
 	%	setup of the threshold and recording values
 	nmic = 5; % Amount of microphones being used
 	thresh = 0.002;
-	th = zeros(nmic,1);
-	firstchannel = 1;
 	lastchannel = nmic; % microphones to use, as they are numbered
-	Fs = 48000;
+% % 	Fs = 48000;
     
 	setup_beacon(10000,'0x62ffdfff',2500,2500);
 	pause(0.1)
 	EPOCommunications('transmit','A1');
 	pause(0.1)
 	
-	rec = pa_wavrecord(firstchannel, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
+	rec = pa_wavrecord(1, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
 	
 	ind = zeros(1,nmic+1);
 	for i = 1:nmic
