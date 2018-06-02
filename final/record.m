@@ -10,10 +10,10 @@ function [ rec ] = record()
 	lastchannel = nmic; % microphones to use, as they are numbered
 % % 	Fs = 48000;
     
-	setup_beacon(10000,'0x62ffdfff',2500,2500);
-	pause(0.1)
-	EPOCommunications('transmit','A1');
-	pause(0.1)
+% 	setup_beacon(10000,'0x62ffdfff',2500,2500);
+% 	pause(0.1)
+% 	EPOCommunications('transmit','A1');
+% 	pause(0.1)
 	
 	rec = pa_wavrecord(1, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
 	
@@ -28,7 +28,7 @@ function [ rec ] = record()
 	rec = rec(ind(nmic+1)-50:ind(nmic+1)+4000);
 	
 % 	plot(rec(ind-50:ind+4000));	
-	EPOCommunications('transmit','A0');
-	closeCom()
+% 	EPOCommunications('transmit','A0');
+% 	closeCom()
 end
 	
