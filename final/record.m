@@ -18,15 +18,15 @@ function [ rec ] = record()
 	rec = pa_wavrecord(1, lastchannel, 24000,48e3,0,'asio'); % recorded sample for threshold detection
 	
 	try
-		ind = zeros(nmic+1,1);
+% 		ind = zeros(nmic+1,1);
 		for i = 1:nmic
-			ind(i,:) = find(rec(:,i) >= thresh,1);
-			if ind(i,:) <= 50
-				ind(i,:) = find(rec(ind(i)+4000:end,i) >= thresh,1);
+			ind(i) = find(rec(:,i) >= thresh,1);
+			if ind(i) <= 50
+				ind(i) = find(rec(ind(i)+4000:end,i) >= thresh,1);
 			end
 		end
-		ind(nmic+1,:) = min(ind);
-		rec = rec(ind(nmic+1,:)-50:ind(nmic+1,:)+4000,:);
+		ind(nmic+1) = min(ind);
+		rec = rec(ind(nmic+1)-50:ind(nmic+1)+4000,:);
 	catch
 		rec = rec;
 	end
