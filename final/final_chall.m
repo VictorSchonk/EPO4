@@ -32,6 +32,8 @@ try
 		
 	end
 	
+% 	rec = record();
+	
 	EPOCommunications('transmit','A0');
 	
 	closeCom();
