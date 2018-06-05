@@ -14,6 +14,7 @@ try
 		rec = record();		% Record 24000 samples.
 		times = ch_td(rec);	% Calculate all the times.
 		pos = loc(times);	% Calculate the position.
+		break;
 		
 	end
 	
@@ -25,10 +26,11 @@ try
 		rec = record();		% Record 24000 samples.
 		times = ch_td(rec);	% Calculate all the times.
 		pos = loc(times);	% Calculate the position.
+		break;
 		
 	end
 	
-	rec = record();
+% 	rec = record();
 	
 	EPOCommunications('transmit','A0');
 	
