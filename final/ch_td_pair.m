@@ -13,10 +13,13 @@ function [outArg] = ch_td_pair(ipArg1,ipArg2,mf,Fs)
 	th = (exp(mf*mean(h))-1);		% Calculate the threshold value
 	ch = exp(h)-1;					% Exponentially scale the channel estimate
 	
+% 	figure;
+% 	plot(ch);
+	
 	if max(ch) < th
 		outArg = 0;							% Output 0 if threshold is not reached
 	else
-		outArg = find(max(ch))*34300/Fs;	% Output the distance in centimeters from the center of the two microphopnes
+		outArg = find(ch == max(ch),1)*34300/Fs;	% Output the distance in centimeters from the center of the two microphopnes
 	end
 
 end
