@@ -9,7 +9,7 @@ function [outArg] = ch_td_pair(ipArg1,ipArg2,mf,Fs)
 %		centerline of the two microphones.
 
 	h = abs(ch3(ipArg1,ipArg2));	% Calculate the channel estimate from the two input signals
-	h = h(1:950);					% Cut to the maximal value due to size of field
+% 	h = h(1:950);					% Cut to the maximal value due to size of field
 	th = (exp(mf*mean(h))-1);		% Calculate the threshold value
 	ch = exp(h)-1;					% Exponentially scale the channel estimate
 	
