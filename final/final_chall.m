@@ -1,5 +1,5 @@
 cport = 4;		% Com port to use.
-q = 0;
+q = 1;
 
 try
 	
@@ -13,22 +13,24 @@ try
 		
 		rec = record();		% Record 24000 samples.
 		times = ch_td(rec);	% Calculate all the times.
-		pos = loc(times);	% Calculate the position.
+		pos = loc(times(1),times(2),times(3),times(4),times(5),times(6),times(7),times(8),times(9),times(10));	% Calculate the position.
+		
+		break;
 		
 	end
 	
-	input("Press enter to continue to the next waypoint.");
+% 	input('Press enter to continue to the next waypoint.');
 	q = 0;
 	
 	while not(q)
 		
 		rec = record();		% Record 24000 samples.
-		times = ch_td(rec);	% Calculate all the times.
-		pos = loc(times);	% Calculate the position.
+		times = ch_td(rec)	% Calculate all the times.
+		pos = loc(times(1),times(2),times(3),times(4),times(5),times(6),times(7),times(8),times(9),times(10));	% Calculate the position.
+		
+		break;
 		
 	end
-	
-	rec = record();
 	
 	EPOCommunications('transmit','A0');
 	
