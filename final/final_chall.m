@@ -11,6 +11,12 @@ try
 	
 	while not(q)
 		
+		rec = record();
+		times = ch_td(rec);
+		pos = loc(times);
+		
+		q = 1; % Exit first while loop when close enough to the waypoint
+		
 	end
 	
 	input("Press enter to continue to the next waypoint.");
@@ -18,9 +24,13 @@ try
 	
 	while not(q)
 		
+		rec = record();
+		%	Chanel estimation stuff for TDOA's
+		pos = loc();
+		
+		q = 1; % Exit second while loop when waypoint is reached
+		
 	end
-	
-	record();
 	
 	closeCom();
 	
