@@ -8,6 +8,7 @@ function [ rec ] = record()
 	nmic = 5;			% Amount of microphones being used
 	thresh = 0.01;		% Treshold value to detect when something is transmitted
 	lastchannel = nmic; % microphones to use, as they are numbered
+	cut_length = 11000;		% length of the cutted up recording
 % % 	Fs = 48000;
     
 % 	setup_beacon(10000,'0x62ffdfff',2500,2500);
@@ -26,7 +27,7 @@ function [ rec ] = record()
 			end
 		end
 		ind(nmic+1) = min(ind);
-		rec = rec(ind(nmic+1)-50:ind(nmic+1)+4000,:);
+		rec = rec(ind(nmic+1)-50:ind(nmic+1)+cut_length-50,:);
 	catch
 		rec = rec;
 	end
