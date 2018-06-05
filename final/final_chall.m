@@ -1,4 +1,4 @@
-cport = 6;		% Com port to use.
+cport = 4;		% Com port to use.
 q = 0;
 
 try
@@ -9,18 +9,20 @@ try
 	pause(0.1)
 	EPOCommunications('transmit','A1');
 	
-	while not(q)
-		
-	end
+% 	while not(q)
+% 		
+% 	end
+% 	
+% 	input("Press enter to continue to the next waypoint.");
+% 	q = 0;
+% 	
+% 	while not(q)
+% 		
+% 	end
 	
-	input("Press enter to continue to the next waypoint.");
-	q = 0;
+	rec = record();
 	
-	while not(q)
-		
-	end
-	
-	record();
+	EPOCommunications('transmit','A0');
 	
 	closeCom();
 	

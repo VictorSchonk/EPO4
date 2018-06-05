@@ -6,7 +6,7 @@ function [ rec ] = record()
 	
 	%	setup of the threshold and recording values
 	nmic = 5;			% Amount of microphones being used
-	thresh = 0.002;		% Treshold value to detect when something is transmitted
+	thresh = 0.01;		% Treshold value to detect when something is transmitted
 	lastchannel = nmic; % microphones to use, as they are numbered
 % % 	Fs = 48000;
     
@@ -15,17 +15,21 @@ function [ rec ] = record()
 % 	EPOCommunications('transmit','A1');
 % 	pause(0.1)
 	
-	rec = pa_wavrecord(1, lastchannel, 12000,48e3,0,'asio'); % recorded sample for threshold detection
+	rec = pa_wavrecord(1, lastchannel, 24000,48e3,0,'asio'); % recorded sample for threshold detection
 	
-	ind = zeros(1,nmic+1);
-	for i = 1:nmic
-		ind(i) = find(rec(:,i) >= thresh,1);
-		if ind(i) <= 50
-			ind(i) = find(rec(ind(i)+4000:end,i) >= thresh,1);
+	try
+		ind = zeros(nmic+1,1);
+		for i = 1:nmic
+			ind(i,:) = find(rec(:,i) >= thresh,1);
+			if ind(i,:) <= 50
+				ind(i,:) = find(rec(ind(i)+4000:end,i) >= thresh,1);
+			end
 		end
+		ind(nmic+1,:) = min(ind);
+		rec = rec(ind(nmic+1,:)-50:ind(nmic+1,:)+4000,:);
+	catch
+		rec = rec;
 	end
-	ind(nmic+1) = min(ind);
-	rec = rec(ind(nmic+1)-50:ind(nmic+1)+4000);
 	
 % 	plot(rec(ind-50:ind+4000));	
 % 	EPOCommunications('transmit','A0');
