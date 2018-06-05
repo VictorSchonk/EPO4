@@ -11,8 +11,9 @@ try
 	
 	while not(q)
 		
-		rec = record();
-		times = ch_td(rec);
+		rec = record();		% Record 24000 samples.
+		times = ch_td(rec);	% Calculate all the times.
+		pos = loc(times);	% Calculate the position.
 		
 	end
 	
@@ -20,6 +21,10 @@ try
 	q = 0;
 	
 	while not(q)
+		
+		rec = record();		% Record 24000 samples.
+		times = ch_td(rec);	% Calculate all the times.
+		pos = loc(times);	% Calculate the position.
 		
 	end
 	
