@@ -5,8 +5,8 @@ function [ rec ] = record()
 %	rec			| The [4050 x nmic] array of audio data
 	
 	%	setup of the threshold and recording values
-	nmic = 5; % Amount of microphones being used
-	thresh = 0.002;
+	nmic = 5;			% Amount of microphones being used
+	thresh = 0.002;		% Treshold value to detect when something is transmitted
 	lastchannel = nmic; % microphones to use, as they are numbered
 % % 	Fs = 48000;
     
