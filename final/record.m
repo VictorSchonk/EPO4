@@ -25,8 +25,13 @@ function [ rec ] = record()
 				ind(i,:) = find(rec(ind(i)+4000:end,i) >= thresh,1);
 			end
 		end
+<<<<<<< HEAD
 		ind(nmic+1,:) = min(ind);
 		rec = rec(ind(nmic+1,:)-50:ind(nmic+1,:)+4000,:);
+=======
+		ind(nmic+1) = min(ind);
+		rec = rec(ind(nmic+1,:)-50:ind(nmic+1,:)+4000);
+>>>>>>> 8b212988f77f3112c293f6fa5ab2391a0654491f
 	catch
 		rec = rec;
 	end

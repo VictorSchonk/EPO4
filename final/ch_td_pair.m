@@ -20,4 +20,3 @@ function [outArg] = ch_td_pair(ipArg1,ipArg2,mf,Fs)
 	end
 
 end
-
