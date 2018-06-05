@@ -9,16 +9,19 @@ try
 	pause(0.1)
 	EPOCommunications('transmit','A1');
 	
-% 	while not(q)
-% 		
-% 	end
-% 	
-% 	input("Press enter to continue to the next waypoint.");
-% 	q = 0;
-% 	
-% 	while not(q)
-% 		
-% 	end
+	while not(q)
+		
+		rec = record();
+		times = ch_td(rec);
+		
+	end
+	
+	input("Press enter to continue to the next waypoint.");
+	q = 0;
+	
+	while not(q)
+		
+	end
 	
 	rec = record();
 	
