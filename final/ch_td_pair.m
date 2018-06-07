@@ -1,24 +1,23 @@
-function [outArg] = ch_td_pair(ipArg1,ipArg2,mf,Fs)
+function [outArg] = ch_td_pair(h1,h2,mf,Fs)
 %CH_TD_PAIR Seperate channel estimation and distance difference function
-%   ipArg1:		Microphone 1 input
-%	ipArg2:		Microphone 2 input
+%   h1:			First channel estimation
+%	h2:			Second channel estimation
 %	mf:			Multiplication factor for the treshold
 %	Fs:			Sample frequency of ipArg
 %
 %	outArg:		Output argument in centimeter difference from the
 %		centerline of the two microphones.
-
-    load('data/reference_05-06-2018.mat')
     
-	h1 = abs(ch3(x,ipArg1));	% Calculate the channel estimate from the two input signals
-	h1 = h1(1:950);					% Cut to the maximal value due to size of field
-	th1 = (exp(mf*mean(h1))-1);		% Calculate the threshold value
-	ch1 = exp(h1)-1;					% Exponentially scale the channel estimate
+% 	h1 = abs(ch3(x,ipArg1));			% Calculate the channel estimate from the two input signals
+% 	h1 = h1(1:950);						% Cut to the maximal value due to size of field
+	th1 = (exp(mf*mean(h1))-1);		% Calculate the first threshold value
+	ch1 = exp(h1)-1;				% Exponentially scale the first channel estimate
+
 	
-    h2 = abs(ch3(x,ipArg2));	% Calculate the channel estimate from the two input signals
-	h2 = h2(1:950);					% Cut to the maximal value due to size of field
-	th2 = (exp(mf*mean(h2))-1);		% Calculate the threshold value
-    ch2 = exp(h2)-1;
+%   h2 = abs(ch3(x,ipArg2));			% Calculate the channel estimate from the two input signals
+% 	h2 = h2(1:950);						% Cut to the maximal value due to size of field
+	th2 = (exp(mf*mean(h2))-1);		% Calculate the second threshold value
+    ch2 = exp(h2)-1;				% Exponentially scale the second channel estimate
     
     
     

@@ -176,3 +176,18 @@ end
 % 9: 5650-9700
 % 6: 4000-8500
 % 7: 6130-10180
+
+% ---------------------------------------------------
+
+load('D:\victor\Documents\Studie\EPO4\git_code\EPO4\final\data\05-06-2018_B.mat');
+ipArg = rec;
+
+load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
+ipArg = rec;
+h1 = abs(ch3(x,ipArg(:,1)));
+h2 = abs(ch3(x,ipArg(:,2)));
+h3 = abs(ch3(x,ipArg(:,3)));
+h4 = abs(ch3(x,ipArg(:,4)));
+h5 = abs(ch3(x,ipArg(:,5)));
+h = [h1,h2,h3,h4,h5];
+h = h(1:950,:);

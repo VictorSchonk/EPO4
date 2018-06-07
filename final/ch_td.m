@@ -2,7 +2,7 @@ function [outArray] = ch_td(ipArg)
 %CH_TD Calculate the vector of differences in centimeters from the
 %centerlines of all microphone pairs
 %
-%   ipArg		|	A 4050x5 array. Of the recorded peak from the 5 microphones
+%   ipArg		|	A [Trec*Fs x 5] array. Of the recorded peak from the 5 microphones
 %---------------
 %	mf = 4		|	The threshold multiplication value to check if samples are
 %					vallid.
@@ -13,29 +13,38 @@ function [outArray] = ch_td(ipArg)
 %					corresponding microphone pairs.
 %					(r12,r13,r14,r15,r23,r24,r25,r34,r35,r45)
 
-	mf = 4;
+	mf = 3;
 	Fs = 48000;
+	
+	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
+	h1 = abs(ch3(x,ipArg(:,1)));
+	h2 = abs(ch3(x,ipArg(:,2)));
+	h3 = abs(ch3(x,ipArg(:,3)));
+	h4 = abs(ch3(x,ipArg(:,4)));
+	h5 = abs(ch3(x,ipArg(:,5)));
+	h = [h1,h2,h3,h4,h5];
+	h = h(1:950,:);
 
 	%12
-	r12 = ch_td_pair(ipArg(:,1),ipArg(:,2),mf,Fs);
+	r12 = ch_td_pair(h(:,1),h(:,2),mf,Fs);
 	%13
-	r13 = ch_td_pair(ipArg(:,1),ipArg(:,3),mf,Fs);
+	r13 = ch_td_pair(h(:,1),h(:,3),mf,Fs);
 	%14
-	r14 = ch_td_pair(ipArg(:,1),ipArg(:,4),mf,Fs);
+	r14 = ch_td_pair(h(:,1),h(:,4),mf,Fs);
 	%15
-	r15 = ch_td_pair(ipArg(:,1),ipArg(:,5),mf,Fs);
+	r15 = ch_td_pair(h(:,1),h(:,5),mf,Fs);
 	%23
-	r23 = ch_td_pair(ipArg(:,2),ipArg(:,3),mf,Fs);
+	r23 = ch_td_pair(h(:,2),h(:,3),mf,Fs);
 	%24
-	r24 = ch_td_pair(ipArg(:,2),ipArg(:,4),mf,Fs);
+	r24 = ch_td_pair(h(:,2),h(:,4),mf,Fs);
 	%25
-	r25 = ch_td_pair(ipArg(:,2),ipArg(:,5),mf,Fs);
+	r25 = ch_td_pair(h(:,2),h(:,5),mf,Fs);
 	%34
-	r34 = ch_td_pair(ipArg(:,3),ipArg(:,4),mf,Fs);
+	r34 = ch_td_pair(h(:,3),h(:,4),mf,Fs);
 	%35
-	r35 = ch_td_pair(ipArg(:,3),ipArg(:,5),mf,Fs);
+	r35 = ch_td_pair(h(:,3),h(:,5),mf,Fs);
 	%45
-	r45 = ch_td_pair(ipArg(:,4),ipArg(:,5),mf,Fs);
+	r45 = ch_td_pair(h(:,4),h(:,5),mf,Fs);
 	
 	outArray = [r12,r13,r14,r15,r23,r24,r25,r34,r35,r45];
 
