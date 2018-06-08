@@ -1,5 +1,5 @@
-function [location] = loc(d12, d13, d14, d15, d23, d24, d25, d34, d35, d45)
-% Input: 10 TDOA waardes voor 5 mics in [cm]
+function [location] = loc(r)
+% Input: een vector met 10 TDOA waardes voor 5 mics in [cm]
 % Output: [x,y,z] van de car in [cm]
 
 %--------------------------------------
@@ -22,16 +22,16 @@ d5 = sqrt(sum((car - m5).^2));
 
 %-----------------------------
 
-r =  [d12;  %[d1 - d2;  %Gebruik commented waardes voor 
-      d13;  % d1 - d3;  %zelf ingevoerde coordinaten
-      d14;  % d1 - d4;
-      d15;  % d1 - d5;
-      d23;  % d2 - d3;
-      d24;  % d2 - d4;
-      d25;  % d2 - d5;
-      d34;  % d3 - d4;
-      d35;  % d3 - d5;
-      d45]; % d4 - d5];
+r = r(:);   %[d12;  %[d1 - d2;  Gebruik commented waardes voor 
+            % d13;  % d1 - d3;  zelf gegenereerde coordinaten
+            % d14;  % d1 - d4;
+            % d15;  % d1 - d5;
+            % d23;  % d2 - d3;
+            % d24;  % d2 - d4;
+            % d25;  % d2 - d5;
+            % d34;  % d3 - d4;
+            % d35;  % d3 - d5;
+            % d45]; % d4 - d5];
 
 pos =  [-460,   0,  0;  %2-1
         -460, 460,  0;  %3-1

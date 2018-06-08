@@ -13,7 +13,7 @@ try
 		
 		rec = record();		% Record 24000 samples.
 		times = ch_td(rec);	% Calculate all the times.
-		pos = loc(times(1),times(2),times(3),times(4),times(5),times(6),times(7),times(8),times(9),times(10));	% Calculate the position.
+		pos = loc(times);	% Calculate the position.
 		
 		break;
 		
