@@ -1,6 +1,9 @@
 function [location] = loc(d12, d13, d14, d15, d23, d24, d25, d34, d35, d45)
-% Hier komt een hele mooie beschrijving
+% Input: 10 TDOA waardes voor 5 mics in [cm]
+% Output: [x,y,z] van de car in [cm]
 
+%--------------------------------------
+% TDOA waardes genereren
 carh = 26;  mich = 50; mic5h = 80;
 md = mich - carh;   m5d = mic5h - carh;
 
@@ -17,8 +20,10 @@ d3 = sqrt(sum((car - m3).^2));
 d4 = sqrt(sum((car - m4).^2));
 d5 = sqrt(sum((car - m5).^2));
 
-r =  [d12;  %[d1 - d2;
-      d13;  % d1 - d3;
+%-----------------------------
+
+r =  [d12;  %[d1 - d2;  %Gebruik commented waardes voor 
+      d13;  % d1 - d3;  %zelf ingevoerde coordinaten
       d14;  % d1 - d4;
       d15;  % d1 - d5;
       d23;  % d2 - d3;
@@ -63,6 +68,8 @@ C = [r(1)^2 - sum((m1).^2) + sum((m2).^2);
      r(9)^2 - sum((m3).^2) + sum((m5).^2);
      r(10)^2 - sum((m4).^2) + sum((m5).^2)];
  
- location = (inv(transpose(A)*A))*transpose(A)*C;
+location = pinv(A)*C;
 location = location(1:3);
+
+%location = (inv(transpose(A)*A))*transpose(A)*C;
 end
