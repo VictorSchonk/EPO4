@@ -16,10 +16,13 @@ function [outArray] = ch_td(ipArg) %,x_co,y_co
 	mf = 3;
 	Fs = 48000;
 	
-% 	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
+% % 	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
 	load('data\08-06-2018_mic_1.mat','rec');
 	x = rec(:,1);
-	
+
+% 	y_co = 2;
+% 	x_co = 4;
+% 	
 % 	load('data\ref_sig.mat','ref');
 % 	if y_co >= x_co % At the side of microphone 3 of the field
 % 		x = ref(:,1); % Use the refenece from microphone 1
