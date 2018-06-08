@@ -1,4 +1,4 @@
-function [outArray] = ch_td(ipArg)
+function [outArray] = ch_td(ipArg) %,x_co,y_co
 %CH_TD Calculate the vector of differences in centimeters from the
 %centerlines of all microphone pairs
 %
@@ -19,6 +19,14 @@ function [outArray] = ch_td(ipArg)
 % 	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
 	load('data\08-06-2018_mic_1.mat','rec');
 	x = rec(:,1);
+	
+% 	load('data\ref_sig.mat','ref');
+% 	if y_co >= x_co % At the side of microphone 3 of the field
+% 		x = ref(:,1); % Use the refenece from microphone 1
+% 	else % At the side of microphone 1 of the field
+% 		x = ref(:,2); % Use the reference from microphone 3
+% 	end
+	
 	h1 = abs(ch3(x,ipArg(:,1)));
 	h2 = abs(ch3(x,ipArg(:,2)));
 	h3 = abs(ch3(x,ipArg(:,3)));
