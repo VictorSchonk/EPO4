@@ -4,6 +4,7 @@ function [location] = loc2(r)
 %---------------------------------
 % maze = createmaze(4); % resolutie in cm
 
+r = r(:);
 min_error = 10000;
 for p=1:115
     for q=1:115
