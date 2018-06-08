@@ -16,7 +16,9 @@ function [outArray] = ch_td(ipArg)
 	mf = 3;
 	Fs = 48000;
 	
-	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
+% 	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
+	load('\\tudelft.net\student-homes\k\zkleijweg\My Documents\GitHub\EPO4\final\data\08-06-2018_mic_1.mat','rec');
+	x = rec(:,1);
 	h1 = abs(ch3(x,ipArg(:,1)));
 	h2 = abs(ch3(x,ipArg(:,2)));
 	h3 = abs(ch3(x,ipArg(:,3)));
