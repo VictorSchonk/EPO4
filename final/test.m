@@ -205,4 +205,48 @@ h = h(1:950,:);
 % 			35	-24.23		-199.20		-166.42		-95.27
 % 			45	-118.25		-174.16		43.81		-95.27
 
+% ---------------------------------------------------
+
+
+if xa == xb
+	
+elseif xa > xb
+	for th = 1:180
+		xtmp = R-R*sin(90-th);
+		ytmp = R*cos(90-th);
+		
+		a1 = radtodeg(atan((xtmp-xb)/(yb-ytmp)));
+		if a1 == th
+			% steery stuff
+			break
+		end
+	end
+elseif xa < xb
+	for th = -1:-180
+		xtmp = R*sin(90-th)-R;
+		ytmp = -R*cos(90-th);
+		
+		a2 = radtodeg(atan((xtmp-xb)/(yb-ytmp)));
+		if a2 == th
+			% steery stuff
+			break
+		end
+	end
+end
+
+% drivey stuff
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
