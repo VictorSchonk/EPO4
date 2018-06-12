@@ -13,26 +13,29 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 %---------------------------------------------------------
 %	outArg	|	The angle in degrees to turn in order to drive straight to point B
 
-R = 80;	% Turn radius in cm's
-
-dirc = dir-90; % To compensate that there is no rotation for dir = 90
-dirm = [cos(dirc),-sin(dirc);sin(dirc),cos(dirc)]; % Rotation matrix
-
-for th = -180:180
+	R = 80;	% Turn radius in cm's
+	ang_err = 0.0017; % Error allowed in the angle
 	
-	tmp1 = [sign(th)*(R-R*sin(90-th));sign(th)*(r*cos(90-th))];
-	tmp2 = dirm*tmp1;
-	tmp2(1) = tmp2(1) + xa;
-	tmp2(2) = tmp2(2) + ya;
+	dirc = (dir-90)*pi/180; % To compensate that there is no rotation for dir = 90
+	dirm = [cos(dirc),-sin(dirc);sin(dirc),cos(dirc)]; % Rotation matrix
 	
-	angpos = radtodeg(atan((yb-tmp2(2))/(tmp2(1)-xb)));
+	for th = -180:0.1:180
 	
-	if angpos == th
-		outArg = th;
-		break
+		nt = (90-th)*pi/180;
+		tr = th*pi/180;
+		tmp1 = [sign(tr)*(R-R*sin(nt));sign(tr)*(R*cos(nt))];
+		tmp2 = dirm*tmp1;
+		tmp2(1) = tmp2(1) + xa;
+		tmp2(2) = tmp2(2) + ya;
+	
+		angpos = atan((yb-tmp2(2))/(tmp2(1)-xb));
+	
+		if angpos >= tr-ang_err && angpos <= tr+ang_err
+			outArg = th;
+			break
+		end
+	
 	end
-	
-end
 
 
 % -----------------------------
