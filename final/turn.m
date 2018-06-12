@@ -14,7 +14,7 @@ function [ th ] = turn( turndeg, dir, xbegin, ybegin )
 % stop()
 x = xbegin;
 y = ybegin;
-r = 80;		%turn radius[cm]
+r = 76;		%turn radius[cm]
 
 if turndeg < 0		%left turn
 	steer(200)
