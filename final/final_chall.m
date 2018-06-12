@@ -7,6 +7,8 @@ q = 1;
 % 	times = ch_td(rec);	% Calculate all the times.
 % 	pos = loc(times);	% Calculate the position.
 
+d_dist = 25; % distance in cm's to drive
+
 A = [0 0];
 dir = 90;
 B = [200 200];
@@ -22,9 +24,6 @@ try
 	% FIRST LOCALISATION
 	[pos(1),pos(2),~] = position(0,0,0);
 	log(1,:) = [pos(1),pos(2),dir];
-	
-
-
 	
 	% FIRST TURN
 	angB = atan(B(2)/B(1)); % Check angle between m2-m1 and m2-B
@@ -50,8 +49,17 @@ try
 		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
 		log(end+1,:) = [pos(1),pos(2),dir];
 		
-		
-		
+		st = check_st(pos(1),pos(2),dir,B(1),B(2));
+		if st ~= 0
+			turn(st);
+			dir = mod((dir + st),360);
+			[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+			log(end+1,:) = [pos(1),pos(2),dir];
+		else
+			forward(d_dist);
+			[pos(1),pos(2),dir] = position(log(end,1),log(end,2),1);
+			log(end+1,:) = [pos(1),pos(2),dir];
+		end
 		
 		% Drivey drivey stuff
 		

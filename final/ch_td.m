@@ -17,8 +17,10 @@ function [outArray] = ch_td(ipArg) %,x_co,y_co
 	Fs = 48000;
 	
 % % 	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
-	load('data\08-06-2018_mic_1.mat','rec');
-	x = rec(:,1);
+% 	load('data\08-06-2018_mic_1.mat','rec');
+	load('data\refSig.mat','refSig'); %refSig
+	n = 1; % the microphone from which the reference should be used
+	x = refSig(:,n);
 
 % 	y_co = 2;
 % 	x_co = 4;
@@ -39,25 +41,25 @@ function [outArray] = ch_td(ipArg) %,x_co,y_co
 	h = h(1:950,:);
 
 	%12
-	r12 = ch_td_pair(h(:,1),h(:,2),mf,Fs);
+	r12 = ch_td_pair(h(:,2),h(:,1),mf,Fs);
 	%13
-	r13 = ch_td_pair(h(:,1),h(:,3),mf,Fs);
+	r13 = ch_td_pair(h(:,3),h(:,1),mf,Fs);
 	%14
-	r14 = ch_td_pair(h(:,1),h(:,4),mf,Fs);
+	r14 = ch_td_pair(h(:,4),h(:,1),mf,Fs);
 	%15
-	r15 = ch_td_pair(h(:,1),h(:,5),mf,Fs);
+	r15 = ch_td_pair(h(:,5),h(:,1),mf,Fs);
 	%23
-	r23 = ch_td_pair(h(:,2),h(:,3),mf,Fs);
+	r23 = ch_td_pair(h(:,3),h(:,2),mf,Fs);
 	%24
-	r24 = ch_td_pair(h(:,2),h(:,4),mf,Fs);
+	r24 = ch_td_pair(h(:,4),h(:,2),mf,Fs);
 	%25
-	r25 = ch_td_pair(h(:,2),h(:,5),mf,Fs);
+	r25 = ch_td_pair(h(:,5),h(:,2),mf,Fs);
 	%34
-	r34 = ch_td_pair(h(:,3),h(:,4),mf,Fs);
+	r34 = ch_td_pair(h(:,4),h(:,3),mf,Fs);
 	%35
-	r35 = ch_td_pair(h(:,3),h(:,5),mf,Fs);
+	r35 = ch_td_pair(h(:,5),h(:,3),mf,Fs);
 	%45
-	r45 = ch_td_pair(h(:,4),h(:,5),mf,Fs);
+	r45 = ch_td_pair(h(:,5),h(:,4),mf,Fs);
 	
 	outArray = [r12,r13,r14,r15,r23,r24,r25,r34,r35,r45];
 
