@@ -15,28 +15,23 @@ try
 	pause(0.1)
 	EPOCommunications('transmit','A1');
 	
-<<<<<<< HEAD
 	% FIRST LOCALISATION
 	rec = record();		% Record 24000 samples.
 	times = ch_td(rec);	% Calculate all the times.
 	pos = loc(times);	% Calculate the position.
 	log(1) = [pos(1),pos(2),dir];
-=======
+	
 % 	rec = record();		% Record 24000 samples.
 % 	times = ch_td(rec);	% Calculate all the times.
 % 	pos = loc(times);	% Calculate the position.
->>>>>>> 206c8c2a275c3c12f0ad28cd8eadff6405ed4e80
+
 	
-	% FIRST TUrn
+	% FIRST TURN
 	angB = atan(B(2)/B(1));
 	if abs(angB-dir) <= 90
-<<<<<<< HEAD
 		th = calc_th(pos(1),pos(2),dir,B(1),B(2));
 		turn(th);
 		dir = mod((dir+th),360);
-=======
-% 		turn(calc_th(pos(1),pos(2),dir,B(1),B(2)));
->>>>>>> 206c8c2a275c3c12f0ad28cd8eadff6405ed4e80
 	else
 % 		turn(180);
 		dir = mod((dir + 180),360);
