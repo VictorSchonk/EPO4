@@ -4,7 +4,7 @@ function [location] = loc2(r)
 %---------------------------------
 res = 4; % [cm], hele deler van 460 aub
 res2 = res/2;
-% maze = createmaze(res); % resolutie in cm
+maze = createmaze(res); % resolutie in cm
 
 r = r(:);
 min_error = 10000;
