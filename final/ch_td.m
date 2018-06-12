@@ -1,8 +1,10 @@
-function [outArray] = ch_td(ipArg,x_co,y_co) %,x_co,y_co
+function [outArray] = ch_td(ipArg,x_co,y_co) %,
 %CH_TD Calculate the vector of differences in centimeters from the
 %centerlines of all microphone pairs
 %
 %   ipArg		|	A [Trec*Fs x 5] array. Of the recorded peak from the 5 microphones
+%	x_co		|	Last x coordinate
+%	y_co		|	Last y coordinate
 %---------------
 %	mf = 4		|	The threshold multiplication value to check if samples are
 %					vallid.
