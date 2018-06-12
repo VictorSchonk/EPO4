@@ -2,6 +2,10 @@ cport = 5;		% Com port to use.
 q = 1;
 
 % log = [x,y,dir] % Variable to keep track of x y position
+%
+% 	rec = record();		% Record 24000 samples.
+% 	times = ch_td(rec);	% Calculate all the times.
+% 	pos = loc(times);	% Calculate the position.
 
 A = [0 0];
 dir = 90;
@@ -16,54 +20,55 @@ try
 	EPOCommunications('transmit','A1');
 	
 	% FIRST LOCALISATION
-	rec = record();		% Record 24000 samples.
-	times = ch_td(rec);	% Calculate all the times.
-	pos = loc(times);	% Calculate the position.
-	log(1) = [pos(1),pos(2),dir];
+	[pos(1),pos(2),~] = position(0,0,0);
+	log(1,:) = [pos(1),pos(2),dir];
 	
-% 	rec = record();		% Record 24000 samples.
-% 	times = ch_td(rec);	% Calculate all the times.
-% 	pos = loc(times);	% Calculate the position.
+
 
 	
 	% FIRST TURN
-	angB = atan(B(2)/B(1));
-	if abs(angB-dir) <= 90
+	angB = atan(B(2)/B(1)); % Check angle between m2-m1 and m2-B
+	if abs(angB-dir) <= 90 % B in front of A
 		th = calc_th(pos(1),pos(2),dir,B(1),B(2));
 		turn(th);
 		dir = mod((dir+th),360);
-	else
-% 		turn(180);
+	else % B behind A
+		turn(180);
 		dir = mod((dir + 180),360);
 		
-		rec = record();		% Record 24000 samples.
-		times = ch_td(rec);	% Calculate all the times.
-		pos = loc(times);	% Calculate the position.
+		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+		log(end+1,:) = [pos(1),pos(2),dir];
 		
-% 		turn(calc_th(pos(1),pos(2),dir,B(1),B(2)));
+		th = calc_th(pos(1),pos(2),dir,B(1),B(2));
+		turn(th);
+		dir = mod((dir+th),360);
 	end
 	
+	% Drive to chechpoint 1 (B)
 	while not(q)
 		
-		rec = record();		% Record 24000 samples.
-		times = ch_td(rec);	% Calculate all the times.
-		pos = loc(times);	% Calculate the position.
+		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+		log(end+1,:) = [pos(1),pos(2),dir];
+		
+		
+		
 		
 		% Drivey drivey stuff
 		
-		break;
-		
+		if length(log) > 1000
+			log = log(2:end,:);
+		end
 	end
 	
-% 	input('Press enter to continue to the next waypoint.');
+	input('Press enter to continue to the next waypoint.');
 	q = 0;
 	
+	% Drvie to checkpoint 2 (C)
 	while not(q)
 		
 		rec = record();		% Record 24000 samples.
 		times = ch_td(rec);	% Calculate all the times.
 		pos = loc(times);	% Calculate the position.
-		pos2 = loc2(times);	% Calculate the position.
 		
 		% drivey drivey stuff 2
 		
@@ -71,12 +76,11 @@ try
 		
 	end
 	
-% 	rec = record();
-	
+	% Stop things at end of challenge
 	EPOCommunications('transmit','A0');
-	
 	closeCom();
 	
 catch
+	% In case of an error
 	closeCom();
 end
