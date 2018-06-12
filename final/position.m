@@ -12,7 +12,7 @@ function [xout,yout,dirout] = position(lastx,lasty,calcdir)
 %	dirout	|	Calculated direction with last x,y and new x,y
 
 	rec = record();		% Record 24000 samples.
-	times = ch_td(rec);	% Calculate all the times.
+	times = ch_td(rec,lastx,lasty);	% Calculate all the times.
 	[xout,yout,~] = loc2(times);	% Calculate the position.
 	
 	if calcdir

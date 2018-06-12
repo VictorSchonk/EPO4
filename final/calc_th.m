@@ -13,7 +13,7 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 %---------------------------------------------------------
 %	outArg	|	The angle in degrees to turn in order to drive straight to point B
 
-	R = 80;	% Turn radius in cm's
+	R = 76;	% Turn radius in cm's
 	ang_err = 0.0017; % Error allowed in the angle
 	
 	dirc = (dir-90)*pi/180; % To compensate that there is no rotation for dir = 90

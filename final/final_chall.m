@@ -22,7 +22,7 @@ try
 	EPOCommunications('transmit','A1');
 	
 	% FIRST LOCALISATION
-	[pos(1),pos(2),~] = position(0,0,0);
+	[pos(1),pos(2),~] = position(A(1),A(2),0);
 	log(1,:) = [pos(1),pos(2),dir];
 	
 	% FIRST TURN
