@@ -7,6 +7,9 @@ q = 1;
 % 	times = ch_td(rec);	% Calculate all the times.
 % 	pos = loc(times);	% Calculate the position.
 
+%	code: 0xD073CDA6 ??????
+%	setpref('dsp','portaudioHostApi',3) 
+
 d_dist = 25; % distance in cm's to drive
 
 A = [0 0];

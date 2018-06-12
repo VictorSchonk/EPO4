@@ -18,22 +18,21 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 	mf = 3;
 	Fs = 48000;
 	
-	d1 = sqrt((460-x_co)^2 + (y_co)^2);
-	d2 = sqrt(x_co^2 + y_co^2);
-	d3 = sqrt((x_co)^2 + (460-y_co)^2);
-	d4 = sqrt((460-x_co)^2 + (460-y_co)^2);
-	d = [d1,d2,d3,d4];
-	for i = 1:4
-		if d(i) == max(d)
-			n = i;
-		end
-	end
+% 	d1 = sqrt((460-x_co)^2 + (y_co)^2);
+% 	d2 = sqrt(x_co^2 + y_co^2);
+% 	d3 = sqrt((x_co)^2 + (460-y_co)^2);
+% 	d4 = sqrt((460-x_co)^2 + (460-y_co)^2);
+% 	d = [d1,d2,d3,d4];
+% 	for i = 1:4
+% 		if d(i) == max(d)
+% 			n = i;
+% 		end
+% 	end
 	
-% % 	load('data/reference_05-06-2018_2.mat','x'); % Load the refence signal for channel estimation.
-% 	load('data\08-06-2018_mic_1.mat','rec');
-	load('data\refSig.mat','refSig'); %refSig
-	x = refSig(:,n);
-
+% REFERENCE SIGNAL FOR CHANNEL ESTIMATION
+	load('data\refSig.mat','refSig'); % refSig for each microphone. 6 is for the mean
+	x = refSig(1:600,1);
+	
 % 	y_co = 2;
 % 	x_co = 4;
 % 	
