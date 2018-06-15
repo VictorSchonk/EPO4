@@ -14,3 +14,6 @@ turn(-45, 270, 200, 360)
 
 %45 degrees left, start at C pointing down
 turn(45, 270, 200, 360)
+
+%180 degrees left, start in middle pointing up
+turn(180, 90, 230, 230)
