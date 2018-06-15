@@ -1,5 +1,5 @@
 cport = 6;
-fn = 'data/15-06-2018_extra_c2.mat';
+fn = 'data/15-06-2018_extra_M1.mat';
 
 c2 = '0xFEDBFF57';
 
@@ -15,7 +15,7 @@ try
 	rec = record();
 	times = ch_td(rec,360,360);
 	pos = loc2(times);
-% 	save(fn,'rec');
+	save(fn,'rec');
 	pause(0.1);
 	closeCom();
 	
