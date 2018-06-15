@@ -18,7 +18,7 @@ function [outArg] = rec_cut(inArg)
 			end
 		end
 		ind(nmic+1) = min(ind);
-		outArg = inArg(ind(nmic+1)-50:ind(nmic+1)+cut_length-50,:);
+		outArg = inArg(ind(nmic+1)-100:ind(nmic+1)+cut_length-100,:);
 	catch
 		outArg = inArg;
 	end
