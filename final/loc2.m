@@ -1,10 +1,10 @@
-function [location] = loc2(r)
+function [location] = loc2(r, maze)
 % Input: een vector met 10 TDOA waardes voor 5 mics in [cm]
 % Output: [x,y] van de car in [cm]
 %---------------------------------
 res = 4; % resolutie in [cm], hele deler van 460 aub
 res2 = res/2;
-maze = createmaze(res); % resolutie in cm
+%maze = createmaze(res); % resolutie in cm
 
 r = r(:);
 min_error = 10000;
