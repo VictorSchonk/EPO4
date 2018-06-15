@@ -1,5 +1,5 @@
 cport = 5;
-fn = 'filename.mat';
+fn = 'data/filename.mat';
 
 try
 	
