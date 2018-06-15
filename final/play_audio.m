@@ -12,7 +12,7 @@ try
 	pause(0.01);
 	setup_beacon(fb,code,fc,rc);
 	EPOCommunications('transmit','A1');
-	pause(5);
+	pause(2);
 	EPOCommunications('transmit','A0');
 	pause(0.01);
 	closeCom();

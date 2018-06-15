@@ -24,10 +24,10 @@ function setup_beacon(fb,code,fc,rc)
 %
 %
 %	used:
-%		fb	= 10e3
-%		code= 62ffdfff
-%		fc	= 25e2
-%		rc	= 250
+%		fb	= 3750e2 (max fc)
+%		code= FEDBFF57
+%		fc	= 15e3 (max 0.5*fs)
+%		rc	= 4000 (fb/(clicks per second))
 
 	pause(0.01);
 	% Bit freq. 0 ... 65535

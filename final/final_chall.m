@@ -20,7 +20,7 @@ try
 	
 	% SETUP
 	openCom(cport);
-	setup_beacon(10000,'0xFEDBFF57',2500,2500);
+	setup_beacon(2500,'0xFEDBFF57',10000,2500);
 	pause(0.1)
 	EPOCommunications('transmit','A1');
 	
