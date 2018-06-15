@@ -33,7 +33,7 @@ if turndeg < 0		%left turn
 	end
 	steer(150)	%steer straight after turn
 	
-elseif inarg > 0	%right turn
+elseif turndeg > 0	%right turn
 	steer(100)
 	pause(0.2)
 	drive(157)
