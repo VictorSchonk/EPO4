@@ -33,7 +33,7 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 % 	n = 5;
 % 	load('data\refSig_2.mat','refSig'); % refSig for each microphone. 6 is for the mean
 % 	x = refSig(:,n);
-	load('data\refTMP.mat','m5');
+	load('data\ref_5_8.mat','m5');
 	x = m5;
 	
 	
