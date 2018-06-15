@@ -1,9 +1,7 @@
 cport = 6;
-fn = 'data/15-06-2018__c2.mat';
+fn = 'data/15-06-2018_extra_c2.mat';
 
-c1 = '0xD073CDA6';
 c2 = '0xFEDBFF57';
-c3 = '0x62ffdfff';
 
 setpref('dsp','portaudioHostApi',3) 
 
