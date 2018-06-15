@@ -1,23 +1,48 @@
-function [location] = loc2(r)
-% Input: een vector met 10 TDOA waardes voor 5 mics in [cm]
+function [location] = loc2(r, maze)
+% Input: een vector met 10 TDOA waardes voor 5 mics in [cm],
+%        maze vector (maze = createmaze(res); % resolutie in [cm],
+%                      zie resolutie hieronder)
+%
 % Output: [x,y] van de car in [cm]
 %---------------------------------
-res = 4; % resolutie in [cm], hele deler van 460 aub
+res = 4;        % resolutie in [cm], hele deler van 460 aub
 res2 = res/2;
-maze = createmaze(res); % resolutie in cm
+d = 7;          % narrowed search interval
+d2 = 2*d;
 
 r = r(:);
 min_error = 10000;
-for p=1:115
-    for q=1:115
-        mazetmp = [maze(p,q,1);maze(p,q,2);maze(p,q,3);maze(p,q,4);
-        maze(p,q,5);maze(p,q,6);maze(p,q,7);maze(p,q,8);maze(p,q,9);maze(p,q,10)];
+for p=1:(460/20)
+    for q=1:(460/20)
+        pp = 5*p; qq = 5*q;
+        mazetmp = reshape(maze(pp,qq,:),10,1);
         error = rms(mazetmp - r);
         if error < min_error
             min_error = error;
-            pos = [res*p-res2,res*q-res2];
+            loctmp = [pp,qq];
         end
     end
 end
-location = pos;
+pindex = [loctmp(1)-d:loctmp(1)+d-1];
+qindex = [loctmp(2)-d:loctmp(2)+d-1];
+if pindex(1) < 1
+    pindex = [1:d2];
+elseif pindex(d2) > 115
+    pindex = [(116-d2):115];
 end
+if qindex(1) < 1
+    qindex = [1:d2];
+elseif qindex(d2) > 115
+    qindex = [(116-d2):115];
+end
+for p = 1:d2
+    for q = 1:d2
+        mazetmp = reshape(maze(pindex(p),qindex(q),:),10,1);
+        error = rms(mazetmp - r);
+        if error <= min_error
+            min_error = error;
+            loctmp = [pindex(p),qindex(q)];
+        end
+    end
+end
+location = [res*loctmp(1)-res2, res*loctmp(2)-res2];
