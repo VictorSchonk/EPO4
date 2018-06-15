@@ -10,7 +10,7 @@ setpref('dsp','portaudioHostApi',3)
 try
 	
 	openCom(cport);
-	setup_beacon(3750,c2,15000,1875);
+	setup_beacon(3750,c2,15000,4000);
 	pause(0.1);
 	EPOCommunications('transmit','A1');
 	pause(0.5);
