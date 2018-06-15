@@ -1,5 +1,5 @@
-cport = 5;
-fn = 'data/15-06-2018_m1_c2_2.mat';
+cport = 6;
+fn = 'data/15-06-2018__c2.mat';
 
 c1 = '0xD073CDA6';
 c2 = '0xFEDBFF57';
@@ -15,13 +15,17 @@ try
 	EPOCommunications('transmit','A1');
 	pause(0.5);
 	rec = record();
-	save(fn,'rec');
+	times = ch_td(rec,360,360);
+	pos = loc2(times);
+% 	save(fn,'rec');
 	pause(0.1);
 	closeCom();
 	
+	
+	figure;
 	plot(rec);
 	pause(1.5);
-	close all;
+% 	close all;
 	
 catch
 	closeCom();

@@ -1,5 +1,5 @@
 %Test the function turn using this script.
-cport = ;
+cport = 5;
 openCom(cport)
 setup_beacon(10000,'0xFEDBFF57',2500,2500);
 
