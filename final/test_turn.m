@@ -1,7 +1,7 @@
 %Test the function turn using this script.
 cport = ;
 openCom(cport)
-setup_beacon(10000,'0x62ffdfff',2500,2500); %Change code
+setup_beacon(10000,'0xFEDBFF57',2500,2500);
 
 %120 degrees left, start in middle pointing right
 turn(120, 0, 230, 230)
@@ -10,4 +10,7 @@ turn(120, 0, 230, 230)
 turn(-90, 45, 150, 150)
 
 %45 degrees right, start at C pointing down
-turn(-45, -90, 200, 360)
+turn(-45, 270, 200, 360)
+
+%45 degrees left, start at C pointing down
+turn(45, 270, 200, 360)
