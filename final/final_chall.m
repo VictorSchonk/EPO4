@@ -12,20 +12,21 @@ setpref('dsp','portaudioHostApi',3)
 
 d_dist = 25; % distance in cm's to drive
 
-A = [0 0];
-dir = 90;
-B = [200 200];
+A = [0 0];		%start position
+dir = 90;		%start direction
+B = [200 200];	%waypoint one
 
 try
 	
 	% SETUP
 	openCom(cport);
-	setup_beacon(10000,'0x62ffdfff',2500,2500);
+	setup_beacon(10000,'0xFEDBFF57',2500,2500);
 	pause(0.1)
 	EPOCommunications('transmit','A1');
 	
-	% FIRST LOCALISATION
-	[pos(1),pos(2),~] = position(A(1),A(2),0);
+% 	% FIRST LOCALISATION		
+% 	[pos(1),pos(2),~] = position(A(1),A(2),0); Not necessary because of the
+% 	input
 	log(1,:) = [pos(1),pos(2),dir];
 	
 	% FIRST TURN

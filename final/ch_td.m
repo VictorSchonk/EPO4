@@ -30,18 +30,12 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 % 	end
 	
 % REFERENCE SIGNAL FOR CHANNEL ESTIMATION
-	load('data\refSig.mat','refSig'); % refSig for each microphone. 6 is for the mean
-	x = refSig(1:600,1);
+% 	n = 5;
+% 	load('data\refSig_2.mat','refSig'); % refSig for each microphone. 6 is for the mean
+% 	x = refSig(:,n);
+	load('data\refTMP.mat','m5');
+	x = m5;
 	
-% 	y_co = 2;
-% 	x_co = 4;
-% 	
-% 	load('data\ref_sig.mat','ref');
-% 	if y_co >= x_co % At the side of microphone 3 of the field
-% 		x = ref(:,1); % Use the refenece from microphone 1
-% 	else % At the side of microphone 1 of the field
-% 		x = ref(:,2); % Use the reference from microphone 3
-% 	end
 	
 	h1 = abs(ch3(x,ipArg(:,1)));
 	h2 = abs(ch3(x,ipArg(:,2)));
