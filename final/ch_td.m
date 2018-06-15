@@ -18,30 +18,23 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 	mf = 3;
 	Fs = 48000;
 	
-% 	d1 = sqrt((460-x_co)^2 + (y_co)^2);
-% 	d2 = sqrt(x_co^2 + y_co^2);
-% 	d3 = sqrt((x_co)^2 + (460-y_co)^2);
-% 	d4 = sqrt((460-x_co)^2 + (460-y_co)^2);
-% 	d = [d1,d2,d3,d4];
-% 	for i = 1:4
-% 		if d(i) == max(d)
-% 			n = i;
-% 		end
-% 	end
+	d1 = sqrt((460-x_co)^2 + (y_co)^2);
+	d2 = sqrt(x_co^2 + y_co^2);
+	d3 = sqrt((x_co)^2 + (460-y_co)^2);
+	d4 = sqrt((460-x_co)^2 + (460-y_co)^2);
+	d = [d1,d2,d3,d4];
+	for i = 1:4
+		if d(i) == max(d)
+			n = i;
+		end
+	end
 	
 % REFERENCE SIGNAL FOR CHANNEL ESTIMATION
-	load('data\refSig.mat','refSig'); % refSig for each microphone. 6 is for the mean
-	x = refSig(1:600,1);
+% 	n = 1;
+	load('data\refSig_2.mat','refSig'); % refSig for each microphone. 6 is for the mean
+	x = refSig(:,n);
 	
-% 	y_co = 2;
-% 	x_co = 4;
-% 	
-% 	load('data\ref_sig.mat','ref');
-% 	if y_co >= x_co % At the side of microphone 3 of the field
-% 		x = ref(:,1); % Use the refenece from microphone 1
-% 	else % At the side of microphone 1 of the field
-% 		x = ref(:,2); % Use the reference from microphone 3
-% 	end
+	
 	
 	h1 = abs(ch3(x,ipArg(:,1)));
 	h2 = abs(ch3(x,ipArg(:,2)));
