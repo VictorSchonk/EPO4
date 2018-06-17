@@ -33,18 +33,33 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 % 	n = 5;
 % 	load('data\refSig_2.mat','refSig'); % refSig for each microphone. 6 is for the mean
 % 	x = refSig(:,n);
-	load('data\ref_1_12_v2.mat','ref');
-	x = ref;
+micn = 5;
+fc   = 3;
+%		# fc 1 => 8 khz
+% 		# fc 2 => 10khz
+%		# fc 3 => 12khz
+vers = 2; % 1 for long || 2 for short
+% rval = [m1_1_8,m1_2_8,m1_1_10,m1_2_10,m1_1_12,m1_2_12;...
+% 		m2_1_8,m2_2_8,m2_1_10,m2_2_10,m2_1_12,m2_2_12;...
+% 		m3_1_8,m3_2_8,m3_1_10,m3_2_10,m3_1_12,m3_2_12;...
+% 		m4_1_8,m4_2_8,m4_1_10,m4_2_10,m4_1_12,m4_2_12;...
+% 		m5_1_8,m5_2_8,m5_1_10,m5_2_10,m5_1_12,m5_2_12];
+	load('data\refref.mat','refref');
+	x = refref(micn,fc,vers,:); % refref(# mic, # fc, long/shor, :)  
+	x = squeeze(x);
 	
-	
-	h1 = abs(ch3(x,ipArg(:,1)));
-	h2 = abs(ch3(x,ipArg(:,2)));
-	h3 = abs(ch3(x,ipArg(:,3)));
-	h4 = abs(ch3(x,ipArg(:,4)));
-	h5 = abs(ch3(x,ipArg(:,5)));
+	tic;
+	h1 = abs(ch3(x,squeeze(ipArg(:,1))));
+	h2 = abs(ch3(x,squeeze(ipArg(:,2))));
+	h3 = abs(ch3(x,squeeze(ipArg(:,3))));
+	h4 = abs(ch3(x,squeeze(ipArg(:,4))));
+	h5 = abs(ch3(x,squeeze(ipArg(:,5))));
 	h = [h1,h2,h3,h4,h5];
+	clear h1 h2 h3 h4 h5;
 	h = h(1:950,:);
-
+	plot(h);
+toc
+tic;
 	%12
 	r12 = ch_td_pair(h(:,2),h(:,1),mf,Fs);
 	%13
@@ -65,7 +80,7 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 	r35 = ch_td_pair(h(:,5),h(:,3),mf,Fs);
 	%45
 	r45 = ch_td_pair(h(:,5),h(:,4),mf,Fs);
-	
+	toc
 	outArray = [r12,r13,r14,r15,r23,r24,r25,r34,r35,r45];
 
 end

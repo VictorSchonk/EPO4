@@ -21,10 +21,10 @@ function [outArg] = ch_td_pair(h1,h2,mf,Fs)
     
     
     
-    figure;
-	plot(ch1);
-	hold on;
-	plot(ch2);
+%     figure;
+% 	plot(ch1);
+% 	hold on;
+% 	plot(ch2);
 	
 	if (max(ch1) < th1) || (max(ch2) < th2)
 		outArg = 0;							% Output 0 if threshold is not reached
