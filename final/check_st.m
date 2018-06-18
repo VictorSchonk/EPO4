@@ -20,6 +20,7 @@ function [outArg] = check_st(xin1,yin1,xin2,yin2,dirin)
 	if xin1 == xin2
 		if yin1 == yin2
 			% ERROR
+			angl = dirin;
 		elseif yin1 > yin2
 			ang1 = 270;
 		elseif yin2 > yin1
