@@ -1,6 +1,7 @@
 function [maze] = createmaze(res)
-%
-% res = 4 is the only one that works at the moment
+%createmaze is a function.
+%     [maze] = createmaze(res)
+%	res = 4 is the only one that works at the moment
 
 
 mic = [460,  0, 50;
