@@ -56,8 +56,8 @@ function [xout,yout,dirout] = position(lastx,lasty,calcdir)
 	
 	xpos = xpos.';
 	
-	xout = sum(xpos)/length(xpos);	%Take the average of the coordinates as
-	yout = sum(ypos)/length(ypos);	%output. 
+	xout = sum(xpos)/length(xpos);
+	yout = sum(ypos)/length(ypos);
 		
 	if calcdir
 		if xout == lastx
