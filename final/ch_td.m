@@ -38,7 +38,7 @@ fc   = 3;
 %		# fc 1 => 8 khz
 % 		# fc 2 => 10khz
 %		# fc 3 => 12khz
-vers = 2; % 1 for long || 2 for short
+vers = 1; % 1 for long || 2 for short
 % rval = [m1_1_8,m1_2_8,m1_1_10,m1_2_10,m1_1_12,m1_2_12;...
 % 		m2_1_8,m2_2_8,m2_1_10,m2_2_10,m2_1_12,m2_2_12;...
 % 		m3_1_8,m3_2_8,m3_1_10,m3_2_10,m3_1_12,m3_2_12;...
@@ -58,7 +58,6 @@ vers = 2; % 1 for long || 2 for short
 	h = h(1:950,:);
 	plot(h);
 toc
-tic;
 	%12
 	r12 = ch_td_pair(h(:,2),h(:,1),mf,Fs);
 	%13
@@ -79,7 +78,7 @@ tic;
 	r35 = ch_td_pair(h(:,5),h(:,3),mf,Fs);
 	%45
 	r45 = ch_td_pair(h(:,5),h(:,4),mf,Fs);
-	toc
+	
 	outArray = [r12,r13,r14,r15,r23,r24,r25,r34,r35,r45];
 
 end
