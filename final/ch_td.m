@@ -45,8 +45,7 @@ vers = 2; % 1 for long || 2 for short
 % 		m4_1_8,m4_2_8,m4_1_10,m4_2_10,m4_1_12,m4_2_12;...
 % 		m5_1_8,m5_2_8,m5_1_10,m5_2_10,m5_1_12,m5_2_12];
 	load('data\refref.mat','refref');
-	x = refref(micn,fc,vers,:); % refref(# mic, # fc, long/shor, :)  
-	x = squeeze(x);
+	x = squeeze(refref(micn,fc,vers,:)); % refref(# mic, # fc, long/shor, :)
 	
 	tic;
 	h1 = abs(ch3(x,squeeze(ipArg(:,1))));
