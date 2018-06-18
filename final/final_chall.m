@@ -15,6 +15,17 @@ d_dist = 25; % distance in cm's to drive
 A = [0 0];		%start position
 dir = 90;		%start direction
 B = [200 200];	%waypoint one
+C = [];			%waypoint two
+
+figure(1); % figure 1 is the figure to plot the progress of the car on the way
+plot([0 460 0 460 230],[0 0 460 460 460],'*k');
+xlim([-10 470]);
+ylim([-10 470]);
+grid on;
+hold on;
+plot([B(1)],[B(2)],'dm');
+plot([C(1)],[C(2)],'dr');
+legend('Microphones','Waypoint 1','Waypoint 2');
 
 try
 	
