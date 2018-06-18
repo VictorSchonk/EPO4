@@ -16,10 +16,15 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 	R = 76;	% Turn radius in cm's
 	ang_err = 0.0017; % Error allowed in the angle
 	
+	t_rev = 0.2; % time to reverse before trying again (in seconds)
+	d_rev = 20; % distance the car reversed (in cm's)
+	
+	res = 0;
+	
 	dirc = (dir-90)*pi/180; % To compensate that there is no rotation for dir = 90
 	dirm = [cos(dirc),-sin(dirc);sin(dirc),cos(dirc)]; % Rotation matrix
 	
-	for th = -180:0.1:180
+	for th = -180:0.1:0
 	
 		nt = (90-th)*pi/180;
 		tr = th*pi/180;
@@ -27,16 +32,49 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 		tmp2 = dirm*tmp1;
 		tmp2(1) = tmp2(1) + xa;
 		tmp2(2) = tmp2(2) + ya;
+		
+		if tmp2(1) < 0 || tmp2(2) < 0 || tmp2(1) > 460 || tmp2(2) > 460
+			break;
+		end
 	
 		angpos = atan((yb-tmp2(2))/(tmp2(1)-xb));
 	
 		if angpos >= tr-ang_err && angpos <= tr+ang_err
+			res = 1;
 			outArg = th;
-			break
+			break;
 		end
 	
 	end
-
+	if res ~= 1
+		for th = 0:0.1:180
+		
+			nt = (90-th)*pi/180;
+			tr = th*pi/180;
+			tmp1 = [sign(tr)*(R-R*sin(nt));sign(tr)*(R*cos(nt))];
+			tmp2 = dirm*tmp1;
+			tmp2(1) = tmp2(1) + xa;
+			tmp2(2) = tmp2(2) + ya;
+		
+			if tmp2(1) < 0 || tmp2(2) < 0 || tmp2(1) > 460 || tmp2(2) > 460
+				drive(142);
+				pause(t_rev);
+				drive(150);
+				xch = -d_rev*cos((dir)*pi/180);
+				ych = -d_rev*sin((dir)*pi/180);
+				outArg = calc_th(xa+xch,ya+ych,dir,xb,yb);
+				break;
+			end
+		
+			angpos = atan((yb-tmp2(2))/(tmp2(1)-xb));
+		
+			if angpos >= tr-ang_err && angpos <= tr+ang_err
+				outArg = th;
+				break;
+			end
+		
+		end
+	end
 
 % -----------------------------
 % if xa == xb
