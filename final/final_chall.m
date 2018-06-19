@@ -56,18 +56,18 @@ try
 	angB = atan(B(2)/B(1)); % Check angle between m2-m1 and m2-B
 	if abs(angB-dir) <= 90 % B in front of A
 		th = calc_th(pos(1),pos(2),dir,B(1),B(2));
-		turn(th);
+		th = turn(th);
 		dir = mod((dir+th),360);
 	else % B behind A
-		turn(180);
-		dir = mod((dir + 180),360);
+		th = turn(180);
+		dir = mod((dir + th),360);
 		
 		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 		log(end+1,:) = [pos(1),pos(2),dir];
 		plot(pos(1),pos(2),'xb');
 		
 		th = calc_th(pos(1),pos(2),dir,B(1),B(2));
-		turn(th);
+		th = turn(th);
 		dir = mod((dir+th),360);
 	end
 	
@@ -113,18 +113,18 @@ try
 	angC = atan(C(2)/C(1)); % Check angle between m2-m1 and m2-B
 	if abs(angC-dir) <= 90 % B in front of A
 		th = calc_th(pos(1),pos(2),dir,C(1),C(2));
-		turn(th);
+		th = turn(th);
 		dir = mod((dir+th),360);
 	else % C behind B
-		turn(180);
-		dir = mod((dir + 180),360);
+		th = turn(180);
+		dir = mod((dir + th),360);
 		
 		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 		log(end+1,:) = [pos(1),pos(2),dir];
 		plot(pos(1),pos(2),'xb');
 		
 		th = calc_th(pos(1),pos(2),dir,C(1),C(2));
-		turn(th);
+		th = turn(th);
 		dir = mod((dir+th),360);
 	end
 	
