@@ -1,5 +1,5 @@
 cport = 5;		% Com port to use.
-q = 1;
+q = 0;
 
 % log = [x,y,dir] % Variable to keep track of x y position
 %
@@ -63,7 +63,7 @@ try
 		turn(180);
 		dir = mod((dir + 180),360);
 		
-		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 		log(end+1,:) = [pos(1),pos(2),dir];
 		plot(pos(1),pos(2),'xb');
 		
@@ -75,7 +75,7 @@ try
 	% Drive to chechpoint 1 (B)
 	while not(q)
 		
-		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 		log(end+1,:) = [pos(1),pos(2),dir];
 		plot(pos(1),pos(2),'xb');
 		
@@ -83,12 +83,12 @@ try
 		if abs(st) > steer_error
 			alpha = turn(st);
 			dir = mod((dir + alpha),360);
-			[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+			[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 			log(end+1,:) = [pos(1),pos(2),dir];
 			plot(pos(1),pos(2),'xb');
 		else
 			forward(d_dist);
-			[pos(1),pos(2),dir] = position(log(end,1),log(end,2),1);
+			[pos(1),pos(2),dir] = position(log(end,1),log(end,2),1,maze);
 			log(end+1,:) = [pos(1),pos(2),dir];
 			plot(pos(1),pos(2),'xb');
 		end
@@ -119,7 +119,7 @@ try
 		turn(180);
 		dir = mod((dir + 180),360);
 		
-		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 		log(end+1,:) = [pos(1),pos(2),dir];
 		plot(pos(1),pos(2),'xb');
 		
@@ -131,7 +131,7 @@ try
 	% Drvie to checkpoint 2 (C)
 	while not(q)
 		
-		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 		log(end+1,:) = [pos(1),pos(2),dir];
 		plot(pos(1),pos(2),'xb');
 		
@@ -139,12 +139,12 @@ try
 		if abs(st) > steer_error
 			alpha = turn(st);
 			dir = mod((dir + alpha),360);
-			[pos(1),pos(2),~] = position(log(end,1),log(end,2),0);
+			[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
 			log(end+1,:) = [pos(1),pos(2),dir];
 			plot(pos(1),pos(2),'xb');
 		else
 			forward(d_dist);
-			[pos(1),pos(2),dir] = position(log(end,1),log(end,2),1);
+			[pos(1),pos(2),dir] = position(log(end,1),log(end,2),1,maze);
 			log(end+1,:) = [pos(1),pos(2),dir];
 			plot(pos(1),pos(2),'xb');
 		end
