@@ -10,7 +10,7 @@ q = 1;
 %	code: 0xD073CDA6 ??????
 setpref('dsp','portaudioHostApi',3) 
 
-d_dist = 25; % distance in cm's to drive
+d_dist = 50; % distance in cm's to drive
 steer_error = 2; %Allowed direction deviation before correcting
 wp_error = 20;	%Distance from a waypoint when the car stops driving
 
