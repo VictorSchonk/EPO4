@@ -17,10 +17,10 @@ d_dist = 25; % distance in cm's to drive
 steer_error = 2; %Allowed direction deviation before correcting
 wp_error = 20;	%Distance from a waypoint when the car stops driving
 
-A = [0 0];		%start position
+A = [346 28];		%start position
 dir = 90;		%start direction
-B = [200 200];	%waypoint one
-C = [360 120];	%waypoint two
+B = [385 248];	%waypoint one
+C = [105 333];	%waypoint two
 
 fc = 10000;
 code = '0xD073CDA6';
