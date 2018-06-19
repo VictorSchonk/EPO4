@@ -33,12 +33,7 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 % 	n = 5;
 % 	load('data\refSig_2.mat','refSig'); % refSig for each microphone. 6 is for the mean
 % 	x = refSig(:,n);
-micn = 5;
-fc   = 3;
-%		# fc 1 => 8 khz
-% 		# fc 2 => 10khz
-%		# fc 3 => 12khz
-vers = 1; % 1 for long || 2 for short
+micn = 1;
 % rval = [m1_1_8,m1_2_8,m1_1_10,m1_2_10,m1_1_12,m1_2_12;...
 % 		m2_1_8,m2_2_8,m2_1_10,m2_2_10,m2_1_12,m2_2_12;...
 % 		m3_1_8,m3_2_8,m3_1_10,m3_2_10,m3_1_12,m3_2_12;...
@@ -46,8 +41,8 @@ vers = 1; % 1 for long || 2 for short
 % 		m5_1_8,m5_2_8,m5_1_10,m5_2_10,m5_1_12,m5_2_12];
 % 	load('data\refref.mat','refref');
 % 	x = squeeze(refref(micn,fc,vers,:)); % refref(# mic, # fc, long/shor, :)
-	load('data\reftmp2.mat','refref');
-	x = squeeze(refref); % refref(# mic, # fc, long/shor, :)
+	load('data\refref2.mat','refref');
+	x = squeeze(refref(:,micn)); % refref(# mic, # fc, long/shor, :)
 
 	tic;
 	h1 = abs(ch3(x,squeeze(ipArg(:,1))));
