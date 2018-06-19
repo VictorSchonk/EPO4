@@ -1,4 +1,4 @@
-function [xout,yout,dirout] = position(lastx,lasty,calcdir)
+function [xout,yout,dirout] = position(lastx,lasty,calcdir,maze)
 %POSITION Calculate the position and direction
 %   lastx	|	Last x position in order to calculate direction
 %				And to check if location in reasonable
@@ -13,7 +13,7 @@ function [xout,yout,dirout] = position(lastx,lasty,calcdir)
 
 	rec = record();		% Record 24000 samples.
 	times = ch_td(rec,lastx,lasty);	% Calculate all the times.
-	[xout,yout,~] = loc2(times);	% Calculate the position.
+	[xout,yout,~] = loc2(times,maze);	% Calculate the position.
 	
 	if calcdir
 		if xout == lastx
