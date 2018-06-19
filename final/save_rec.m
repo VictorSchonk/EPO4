@@ -33,14 +33,14 @@ try
 % 	plot(rec);
 	
 	pause(0.1);
-	setup_beacon(3750,c3,12000,1250);
+	setup_beacon(3750,c3,10000,1250);
 	pause(0.1);
 	EPOCommunications('transmit','A1');
 	pause(0.5);
 	rec = record();
 % 	times = ch_td(rec,360,360);
 % 	pos = loc2(times,createmaze(1));
-	fn = 'data/15-06-2018_extra_C_12k.mat';
+	fn = 'data/19-06-2018_C_10k.mat';
 	save(fn,'rec');
 	pause(0.1);
 	closeCom();
