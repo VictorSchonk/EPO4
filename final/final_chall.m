@@ -100,6 +100,7 @@ try
 			disp('Arrived at the first waypoint! position:');
 			disp([pos(1);pos(2)]);
 			q = 1;
+			break;
 		end
 		
 	end
@@ -157,6 +158,7 @@ try
 			disp([pos(1);pos(2)]);
 			pause(2)
 			q = 1;
+			break;
 		end
 	end
 	
