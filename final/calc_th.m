@@ -16,8 +16,8 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 	R = 76;	% Turn radius in cm's
 	ang_err = 0.0017; % Error allowed in the angle
 	
-	t_rev = 0.2; % time to reverse before trying again (in seconds)
-	d_rev = 20; % distance the car reversed (in cm's)
+	t_rev = 1.5; % time to reverse before trying again (in seconds)
+	d_rev = 50; % distance the car reversed (in cm's)
 	
 	res = 0;
 	
