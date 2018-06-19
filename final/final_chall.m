@@ -95,15 +95,15 @@ try
 		end
 		
 		if sqrt((pos(1)-B(1))^2 + (pos(2)-B(2))^2) < wp_error
-			arrived = 'Arrived at the first waypoint! position:'
-			[pos(1);pos(2)]
-			pause(2)
+			arrived = 'Arrived at the first waypoint! position:';
+			disp([pos(1);pos(2)]);
 			q = 1;
 		end
 		
 	end
 	
-	input('Press enter to continue to the next waypoint.');
+% 	input('Press enter to continue to the next waypoint.');
+	pause(10); % measuring pause at the waypoint
 	q = 0;
 	
 	% SECCOND TURN
