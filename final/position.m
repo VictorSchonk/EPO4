@@ -13,7 +13,14 @@ function [xout,yout,dirout] = position(lastx,lasty,calcdir,maze)
 
 	rec = record();		% Record 24000 samples.
 	times = ch_td(rec,lastx,lasty);	% Calculate all the times.
-	[xout,yout] = loc2(times,maze);	% Calculate the position.
+	[x,y] = loc2(times,maze);	% Calculate the position.
+	
+	while (x < 0 || x > 460 || y < 0 || y > 0)
+		[x,y] =  position(lastx,lasty,calcdir,maze);
+	end
+	
+	xout = x;
+	yout = y;
 	
 	if calcdir
 		if xout == lastx
