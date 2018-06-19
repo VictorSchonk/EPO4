@@ -10,6 +10,7 @@ q = 1;
 %	code: 0xD073CDA6 ??????
 setpref('dsp','portaudioHostApi',3) 
 
+d_dist = 50; % distance in cm's to drive
 %---- BEGIN OF VARIABLES ----
 
 d_dist = 25; % distance in cm's to drive
