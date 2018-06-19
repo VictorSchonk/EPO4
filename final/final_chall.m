@@ -40,6 +40,8 @@ plot(C(1),C(2),'dr');
 legend('Microphones','Waypoint 1','Waypoint 2');
 plot(A(1),A(2),'xb');
 
+maze = createmaze(4);
+
 try
 	
 	% SETUP
