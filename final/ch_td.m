@@ -24,14 +24,14 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 	d4 = sqrt((460-x_co)^2 + (460-y_co)^2);
 	d5 = sqrt((230-x_co)^2 + (460-y_co)^2);
 	d = [d1,d2,d3,d4,d5];
-	for i = 1:4
+	for i = 1:5
 		if d(i) == min(d)
 			n = i;
 		end
 	end
 	
 % REFERENCE SIGNAL FOR CHANNEL ESTIMATION
-micn = n;
+	micn = n;
 	load('data\refref2.mat','refref');
 	x = squeeze(refref(:,micn));
 

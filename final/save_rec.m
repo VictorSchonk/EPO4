@@ -1,4 +1,4 @@
-cport = 7;
+cport = 6;
 fn = 'data/19-06-2018_M.mat';
 
 % c2 = '0xFEDBFF57';

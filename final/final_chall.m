@@ -16,7 +16,7 @@ d_dist = 50; % distance in cm's to drive
 steer_error = 2; %Allowed direction deviation before correcting
 wp_error = 15;	%Distance from a waypoint when the car stops driving
 
-A = [346 28];		%start position
+A = [346 0];		%start position
 dir = 90;		%start direction
 B = [385 248];	%waypoint one
 C = [105 333];	%waypoint two
@@ -50,6 +50,8 @@ try
 	EPOCommunications('transmit','A1');
 	
 % 	% FIRST LOCALISATION LOG
+	pos = A;
+	
 	log(1,:) = [pos(1),pos(2),dir];
 	
 	% FIRST TURN

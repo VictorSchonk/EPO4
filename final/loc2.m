@@ -1,4 +1,4 @@
-function [location] = loc2(r, maze)
+function [xout, yout] = loc2(r, maze)
 % Input: een vector met 10 TDOA waardes voor 5 mics in [cm],
 %        maze vector (maze = createmaze(res); % resolutie in [cm],
 %                      zie resolutie hieronder)  
@@ -46,3 +46,6 @@ for p = 1:d2
     end
 end
 location = [res*loctmp(1)-res2, res*loctmp(2)-res2];
+xout = location(1);
+yout = location(2);
+end

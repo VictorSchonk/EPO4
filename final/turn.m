@@ -1,4 +1,4 @@
-function [ th ] = turn( turndeg, dir, xbegin, ybegin )
+function [ th ] = turn( turndeg, dir, xbegin, ybegin, maze )
 %TURN car makes a turn of inarg degrees
 %     turndeg > 0 : left turn
 %     turndeg < 0 : right turn
@@ -13,14 +13,14 @@ if turndeg > 0		%left turn
 	drive(157)
 	pause(0.5)
 	drive(150)
-	[x,y,~] = position(x,y,0);	%redetermine position
+	[x,y] = position(xbegin,ybegin,0,maze);	%redetermine position
 	pos = rot*[x;y];
-	th = 90 - (pi/180)*acos((pos(y)-posbegin(2))/r);	%calculate total turned degrees
+	th = 90 - (pi/180)*acos((pos(2)-posbegin(2))/r);	%calculate total turned degrees
 	while th < turndeg		%while not turned enough continue
 		drive(157)
 		pause(0.5)
 		drive(150)
-		[x,y,~] = position(x,y,0);
+		[x,y] = position(x,y,0,maze);
 		pos = rot*[x;y];
 		th = 90 - (pi/180)*acos((pos(2)-posbegin(2))/r);
 	end
@@ -32,14 +32,14 @@ elseif turndeg < 0	%right turn
 	drive(157)
 	pause(0.5)
 	drive(150)
-	[x,y,~] = position(x,y,0);	%redetermine position
+	[x,y] = position(x,y,0,maze);	%redetermine position
 	pos = rot*[x;y];
 	th = 90 - (pi/180)*acos((pos(2)-posbegin(2))/r);	%calculate total turned degrees
 	while th > turndeg		%while not turned enough continue
 		drive(157)
 		pause(0.5)
 		drive(150)
-		[x,y,~] = position(x,y,0);
+		[x,y] = position(x,y,0,maze);
 		pos = rot*[x;y];
 		th = 90 - (pi/180)*acos((pos(2)-posbegin(2))/r);
 	end
