@@ -1,4 +1,4 @@
-function [outArray] = ch_td(ipArg,varargin) %,
+function [outArray] = ch_td(ipArg,x_co,y_co) %,
 %CH_TD Calculate the vector of differences in centimeters from the
 %centerlines of all microphone pairs
 %
@@ -18,31 +18,22 @@ function [outArray] = ch_td(ipArg,varargin) %,
 	mf = 3;
 	Fs = 48000;
 	
-% 	d1 = sqrt((460-x_co)^2 + (y_co)^2);
-% 	d2 = sqrt(x_co^2 + y_co^2);
-% 	d3 = sqrt((x_co)^2 + (460-y_co)^2);
-% 	d4 = sqrt((460-x_co)^2 + (460-y_co)^2);
-% 	d = [d1,d2,d3,d4];
-% 	for i = 1:4
-% 		if d(i) == max(d)
-% 			n = i;
-% 		end
-% 	end
+	d1 = sqrt((460-x_co)^2 + (y_co)^2);
+	d2 = sqrt(x_co^2 + y_co^2);
+	d3 = sqrt((x_co)^2 + (460-y_co)^2);
+	d4 = sqrt((460-x_co)^2 + (460-y_co)^2);
+	d5 = sqrt((230-x_co)^2 + (460-y_co)^2);
+	d = [d1,d2,d3,d4,d5];
+	for i = 1:4
+		if d(i) == min(d)
+			n = i;
+		end
+	end
 	
 % REFERENCE SIGNAL FOR CHANNEL ESTIMATION
-% 	n = 5;
-% 	load('data\refSig_2.mat','refSig'); % refSig for each microphone. 6 is for the mean
-% 	x = refSig(:,n);
-micn = 1;
-% rval = [m1_1_8,m1_2_8,m1_1_10,m1_2_10,m1_1_12,m1_2_12;...
-% 		m2_1_8,m2_2_8,m2_1_10,m2_2_10,m2_1_12,m2_2_12;...
-% 		m3_1_8,m3_2_8,m3_1_10,m3_2_10,m3_1_12,m3_2_12;...
-% 		m4_1_8,m4_2_8,m4_1_10,m4_2_10,m4_1_12,m4_2_12;...
-% 		m5_1_8,m5_2_8,m5_1_10,m5_2_10,m5_1_12,m5_2_12];
-% 	load('data\refref.mat','refref');
-% 	x = squeeze(refref(micn,fc,vers,:)); % refref(# mic, # fc, long/shor, :)
+micn = n;
 	load('data\refref2.mat','refref');
-	x = squeeze(refref(:,micn)); % refref(# mic, # fc, long/shor, :)
+	x = squeeze(refref(:,micn));
 
 	tic;
 	h1 = abs(ch3(x,squeeze(ipArg(:,1))));
