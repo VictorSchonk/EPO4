@@ -14,7 +14,7 @@ setpref('dsp','portaudioHostApi',3)
 
 d_dist = 50; % distance in cm's to drive
 steer_error = 2; %Allowed direction deviation before correcting
-wp_error = 20;	%Distance from a waypoint when the car stops driving
+wp_error = 15;	%Distance from a waypoint when the car stops driving
 
 A = [346 28];		%start position
 dir = 90;		%start direction
