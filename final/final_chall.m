@@ -95,7 +95,7 @@ try
 		end
 		
 		if sqrt((pos(1)-B(1))^2 + (pos(2)-B(2))^2) < wp_error
-			arrived = 'Arrived at the first waypoint! position:';
+			disp('Arrived at the first waypoint! position:');
 			disp([pos(1);pos(2)]);
 			q = 1;
 		end
@@ -151,14 +151,14 @@ try
 		end
 		
 		if sqrt((pos(1)-C(1))^2 + (pos(2)-C(2))^2) < wp_error
-			arrived = 'Arrived at the destination! position:'
-			[pos(1);pos(2)]
+			disp('Arrived at the destination! position:');
+			disp([pos(1);pos(2)]);
 			pause(2)
 			q = 1;
 		end
 	end
 catch
 	% In case of an error
-	error('!!!	Some error occured	!!!');
 	closeCom();
+	error('!!!	Some error occured	!!!');
 end
