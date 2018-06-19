@@ -7,7 +7,7 @@ EPOCommunications('transmit','A1');
 maze = createmaze(4);
 
 %120 degrees left, start in middle pointing right
-turn(90, 0, 230, 230,maze)
+turn(120, 0, 230, 230,maze)
 
 % %90 degrees right, start at A pointing m4
 % turn(-90, 45, 150, 150)
