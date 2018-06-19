@@ -1,4 +1,4 @@
-function [outArray] = ch_td(ipArg,x_co,y_co) %,
+function [outArray] = ch_td(ipArg) %,
 %CH_TD Calculate the vector of differences in centimeters from the
 %centerlines of all microphone pairs
 %
