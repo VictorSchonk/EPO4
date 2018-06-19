@@ -159,6 +159,9 @@ try
 			q = 1;
 		end
 	end
+	
+	closeCom();
+	
 catch
 	% In case of an error
 	closeCom();
