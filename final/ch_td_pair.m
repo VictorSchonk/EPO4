@@ -12,19 +12,19 @@ function [outArg] = ch_td_pair(h1,h2,mf,Fs,binc1,binc2)
 
 	binw = 100; % Half the bin width to look at
 	
-	beg1 = binc1-binw;
+	beg1 = round(binc1-binw);
 	if beg1 < 1
 		beg1 = 1;
 	end
-	end1 = binc1+binw;
+	end1 = round(binc1+binw);
 	if end1 > 950
 		end1 = 950;
 	end
-	beg2 = binc2-binw;
+	beg2 = round(binc2-binw);
 	if beg2 < 1
 		beg2 = 1;
 	end
-	end2 = binc2+binw;
+	end2 = round(binc2+binw);
 	if end2 > 950
 		end2 = 950;
 	end
