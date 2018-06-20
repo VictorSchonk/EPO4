@@ -19,7 +19,7 @@ function [xout,yout,dirout] = position(lastx,lasty,calcdir,maze)
 	
 	while (x < 0 || x > 460 || y < 0 || y > 460)
 		[x,y] =  position(lastx,lasty,calcdir,maze);
-		disp(kapot);
+		disp(repositioning);
 	end
 	
 	xout = x;
