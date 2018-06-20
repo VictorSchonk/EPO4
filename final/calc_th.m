@@ -28,7 +28,8 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 	
 		nt = (90-th)*pi/180;
 		tr = th*pi/180;
-		tmp1 = [sign(tr)*(R-R*sin(nt));sign(tr)*(R*cos(nt))];
+% 		tmp1 = [sign(tr)*(R-R*sin(nt));sign(tr)*(R*cos(nt))];
+		tmp1 = [ R-R*cos(tr) ; -R*sin(tr) ];
 		tmp2 = dirm*tmp1;
 		tmp2(1) = tmp2(1) + xa;
 		tmp2(2) = tmp2(2) + ya;
@@ -51,7 +52,7 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 		
 			nt = (90-th)*pi/180;
 			tr = th*pi/180;
-			tmp1 = [sign(tr)*(R-R*sin(nt));sign(tr)*(R*cos(nt))];
+			tmp1 = [ -R+R*cos(tr) ; R*sin(tr) ];
 			tmp2 = dirm*tmp1;
 			tmp2(1) = tmp2(1) + xa;
 			tmp2(2) = tmp2(2) + ya;
