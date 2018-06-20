@@ -13,9 +13,21 @@ function [outArg] = ch_td_pair(h1,h2,mf,Fs,binc1,binc2)
 	binw = 100; % Half the bin width to look at
 	
 	beg1 = binc1-binw;
+	if beg1 < 1
+		beg1 = 1;
+	end
 	end1 = binc1+binw;
+	if end1 > 950
+		end1 = 950;
+	end
 	beg2 = binc2-binw;
+	if beg2 < 1
+		beg2 = 1;
+	end
 	end2 = binc2+binw;
+	if end2 > 950
+		end2 = 950;
+	end
     
 % 	h1 = abs(ch3(x,ipArg1));			% Calculate the channel estimate from the two input signals
 % 	h1 = h1(1:950);						% Cut to the maximal value due to size of field
