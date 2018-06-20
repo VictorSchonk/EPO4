@@ -61,7 +61,7 @@ try
 		th = turn(th);
 		dir = mod((dir+th),360);
 	else % B behind A
-		th = turn(180);
+		th = turn(90);
 		dir = mod((dir + th),360);
 		
 		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
@@ -118,7 +118,7 @@ try
 		th = turn(th);
 		dir = mod((dir+th),360);
 	else % C behind B
-		th = turn(180);
+		th = turn(90);
 		dir = mod((dir + th),360);
 		
 		[pos(1),pos(2),~] = position(log(end,1),log(end,2),0,maze);
