@@ -1,4 +1,4 @@
-cport = 5;		% Com port to use.
+cport = 6;		% Com port to use.
 q = 0;
 
 % log = [x,y,dir] % Variable to keep track of x y position
@@ -46,7 +46,7 @@ try
 	% SETUP
 	openCom(cport);
 	setup_beacon(fb,code,fc,rc);
-	pause(0.1)
+	pause(0.1);
 	EPOCommunications('transmit','A1');
 	
 % 	% FIRST LOCALISATION LOG
@@ -166,8 +166,9 @@ try
 	
 	closeCom();
 	
-catch
+catch err
 	% In case of an error
 	closeCom();
+	disp(err);
 	error('!!!	Some error occured	!!!');
 end

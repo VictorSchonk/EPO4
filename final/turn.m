@@ -33,7 +33,7 @@ elseif turndeg < 0	%right turn
 	drive(157)
 	pause(dtime)
 	drive(150)
-	[x,y] = position(x,y,0,maze);	%redetermine position
+	[x,y] = position(xbegin,ybegin,0,maze);	%redetermine position
 	pos = rot*[x;y];
 	th = 90 - (pi/180)*acos((pos(2)-posbegin(2))/r);	%calculate total turned degrees
 	while th > turndeg		%while not turned enough continue
