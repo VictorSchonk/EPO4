@@ -31,8 +31,8 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 	end
 	
 % REFERENCE SIGNAL FOR CHANNEL ESTIMATION
-	micn = n;
-	load('data\refref2.mat','refref');
+	micn = 3;
+	load('data\refref3.mat','refref');
 	x = squeeze(refref(:,micn));
 
 	tic;
