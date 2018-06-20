@@ -33,7 +33,7 @@ function [outArray] = ch_td(ipArg,x_co,y_co) %,
 	
 	%Determine bin mid to look for channel peak
 	for i = 1:5
-		if i = n
+		if i == n
 			b(i) = 90;
 		else
 			b(i) = 90 + d(i)*Fs/34300;
