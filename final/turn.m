@@ -8,16 +8,22 @@ posbegin = rot*[xbegin;ybegin];
 r = 76;		%turn radius[cm]
 dtime = 1.0;
 
+turnsm = ceil(0.0611*turndeg);
+if turnsm < 1
+	turnsm = 1;
+end
+
 if turndeg > 0		%left turn
 	steer(200)
 	pause(0.2)
 	drive(157)
 	pause(dtime)
 	drive(150)
+	turnsm = turnsm - 1;
 	[x,y] = position(xbegin,ybegin,0,maze);	%redetermine position
 	pos = rot*[x;y];
 	th = 90 - (pi/180)*acos((pos(2)-posbegin(2))/r);	%calculate total turned degrees
-	while th < turndeg		%while not turned enough continue
+	while th < turndeg && turnsm > 0		%while not turned enough continue
 		drive(157)
 		pause(dtime)
 		drive(150)
@@ -33,10 +39,11 @@ elseif turndeg < 0	%right turn
 	drive(157)
 	pause(dtime)
 	drive(150)
+	turnsm = turnsm - 1;
 	[x,y] = position(xbegin,ybegin,0,maze);	%redetermine position
 	pos = rot*[x;y];
 	th = 90 - (pi/180)*acos((pos(2)-posbegin(2))/r);	%calculate total turned degrees
-	while th > turndeg		%while not turned enough continue
+	while th > turndeg && turnsm > 0		%while not turned enough continue
 		drive(157)
 		pause(dtime)
 		drive(150)
