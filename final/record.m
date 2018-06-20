@@ -7,7 +7,7 @@ function [ rec_out ] = record()
 % % 	nmic = 5;			% Amount of microphones being used
 % % 	Fs = 48000;
 	
-	rec = pa_wavrecord(1, 5, 24000,48e3,0,'asio'); % recorded sample for threshold detection
+	rec = pa_wavrecord(1, 5, 33600,48e3,0,'asio'); % recorded sample for threshold detection
 	
 	rec_out = rec_cut(rec);
 	
