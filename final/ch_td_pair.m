@@ -40,6 +40,11 @@ function [outArg] = ch_td_pair(h1,h2,mf,Fs,binc1,binc2)
 	th2 = (exp(mf*mean(h2))-1);		% Calculate the second threshold value
     ch2 = exp(h2)-1;				% Exponentially scale the second channel estimate
 	
+% 	figure;
+% 	plot(linspace(beg1,end1,end1-beg1+1),ch1(beg1:end1));
+% 	hold on;
+% 	plot(linspace(beg2,end2,end2-beg2+1),ch2(beg2:end2));
+% 	xlim([0 950]);
 	
 	if (max(ch1) < th1) || (max(ch2) < th2)
 		outArg = 0;							% Output 0 if threshold is not reached
