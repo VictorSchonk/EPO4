@@ -21,38 +21,56 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 	
 	res = 0;
 	
+	dir = mod(dir,360);
+	
 	dirc = (dir-90)*pi/180; % To compensate that there is no rotation for dir = 90
 	dirm = [cos(dirc),-sin(dirc);sin(dirc),cos(dirc)]; % Rotation matrix
 	
+% 	figure;
 	for th = -180:0.1:0
 	
-		nt = mod((90-th)*pi/180,pi);
-		tr = mod(th*pi/180,pi);
-		disp(nt);
-		disp(th);
-		tmp1 = [-(R-R*sin(nt));sign(tr)*(R*cos(nt))];
 		nt = (90-th)*pi/180;
 		tr = th*pi/180;
-% 		tmp1 = [sign(tr)*(R-R*sin(nt));sign(tr)*(R*cos(nt))];
 		tmp1 = [ R-R*cos(tr) ; -R*sin(tr) ];
 		tmp2 = dirm*tmp1;
+		
 		tmp2(1) = tmp2(1) + xa;
 		tmp2(2) = tmp2(2) + ya;
 		
-		disp(tmp2);
+% 		plot(tmp1(1),tmp1(2),'xb');
+% 		hold on;
+% 		plot(tmp2(1),tmp2(2),'xr');
+% 		plot(xa,ya,'dm');
+% 		plot(xb,yb,'dk');
+% 		xlim([0 460]);
+% 		ylim([0 460]);
 		
 		if tmp2(1) < 0 || tmp2(2) < 0 || tmp2(1) > 460 || tmp2(2) > 460
-			break;
+			continue;
 		end
 	
-		angpos = atan((yb-tmp2(2))/(tmp2(1)-xb));
+		ang1 = dir*pi/180;
+		
+		if xb < xa
+			angtmpb = mod(atan((tmp2(2)-yb)/(tmp2(1)-xb))+pi,2*pi);
+		else
+			angtmpb = mod(atan((tmp2(2)-yb)/(tmp2(1)-xb)),2*pi);
+		end
+		
+		
+		angpos = -1*(ang1-angtmpb);
+		
+		
+% 		disp('-----------------');
+% 		disp(angtmpb*180/pi);
+% 		disp(angpos*180/pi);
+% 		disp(tr*180/pi);
 	
 		if angpos >= tr-ang_err && angpos <= tr+ang_err
 			res = 1;
 			outArg = th;
 			break;
 		end
-	
 	end
 	if res ~= 1
 		for th = 0:0.1:180
@@ -64,7 +82,14 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 			tmp2(1) = tmp2(1) + xa;
 			tmp2(2) = tmp2(2) + ya;
 		
+% 			plot(tmp1(1),tmp1(2),'xb');
+% 			hold on;
+% 			plot(tmp2(1),tmp2(2),'xr');
+% 			plot(xa,ya,'dm');
+% 			plot(xb,yb,'dk');
+		
 			if tmp2(1) < 0 || tmp2(2) < 0 || tmp2(1) > 460 || tmp2(2) > 460
+				disp('Reverse and retry turn');
 				drive(142);
 				pause(t_rev);
 				drive(150);
@@ -74,7 +99,9 @@ function [outArg] = calc_th(xa,ya,dir,xb,yb)
 				break;
 			end
 		
-			angpos = atan((yb-tmp2(2))/(tmp2(1)-xb));
+			angtmpb = atan((tmp2(2)-yb)/(tmp2(1)-xb));
+		
+			angpos = pi-dir*pi/180+angtmpb;
 		
 			if angpos >= tr-ang_err && angpos <= tr+ang_err
 				outArg = th;
